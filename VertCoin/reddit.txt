@@ -1,0 +1,20 @@
+# How to mine VTC and UIS on Easy Mine
+A short, step-by-step, visual guide to help you get started on mining VertCoin and Unitus! Before we start - note that this guide will explain how to merge-mine both coins, where you will receive the additional UIS at no extra cost!
+
+Table of Contents
+# Step 1 - Preparing the Wallets
+## Step 1 A - Vertcoin wallet
+## Step 1 B - Unitus wallet
+# Step 2 - Setting up your Miner
+## Step 2 A - CCminer for Nvidia - Latest release
+### Step 2 A.1 - Temporarily disable Windows Defender and add CCminer to the Exceptions
+### Step 2 A.2 - Setting up the actual miner, bat files and such
+### Step 2 A.3 - Running your miner - Congrats!
+## Step 2 B - CCminer for Nvidia - v2.2.5
+### Step 2 B.1 - Setting up the actual miner, bat files and such
+### Step 2 B.2 - Running your miner - Congrats!
+# Step 3 - Adding your Unitus address to Easy Mine
+## Step 3 A - Ledger specifc steps
+# Step 4 - Bonus: How to OC your GPUs
+## Step 4 A - Setting up MSI Afterburner
+## Step 4 B - OC settings for Lyra2rev2

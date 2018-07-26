@@ -1,0 +1,144 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Guide on how to mine on Easy Mine</title>
+  <meta name="description" content="Guide on how to mine on Easy Mine">
+
+  <link rel="stylesheet" href="default.css">
+
+</head>
+
+<body>
+	<a name="top"></a>
+	<h1>How to mine VTC and UIS on Easy Mine</h1>
+	<p>A short, step-by-step, visual guide to help you get started on mining VertCoin and Unitus! Before we start - note that this guide will explain how to merge-mine both coins, where you will receive the additional UIS at no extra cost!</p>
+
+	<div id="toc_container">
+		<h2>Table of Contents</h2>
+		<ul class="toc_list">
+	  		<li><a href="#Step1">Step 1 - Preparing the wallets</a>
+			  	<ul>
+			    	<li><a href="#Step1A">Step 1A - Vertcoin wallet</a></li>
+			    	<li><a href="#Step1B">Step 1B - Unitus wallet</a></li>
+			  	</ul>
+			</li>
+			<li><a href="#Step2">Step 2 - Setting up your Miner</a>
+			  	<ul>
+			    	<li><a href="#Step2A">Step 2A - CCminer for Nvidia - Latest release</a>
+			    		<ul>
+			    			<li><a href="#Step2A1">Step 2A.1 - Temporarily disable Windows Defender and add CCminer to the Exceptions</a></li>
+			    			<li><a href="#Step2A2">Step 2A.2 - Setting up the actual miner, bat files and such</a></li>
+			    			<li><a href="#Step2A3">Step 2A.3 - Running your miner - Congrats!</a></li>
+			    		</ul>
+			    	</li>
+			    	<li><a href="#Step2B">Step 2B - CCminer for Nvidia - v2.2.5</a></li>
+			    		<ul>
+			    			<li><a href="#Step2B1">Step 2B.1 - Setting up the actual miner, bat files and such</a></li>
+			    			<li><a href="#Step2B2">Step 2B.2 - Running your miner - Congrats!</a></li>
+			    		</ul>
+			    	</li>
+			  	</ul>
+			</li>
+			<li><a href="#Step3">Step 3 - Adding your Unitus Address to Easy Mine</a>
+			  	<ul>
+			    	<li><a href="#Step3A">Step 3A - Ledger specific steps</a></li>
+			  	</ul>
+			</li>
+			<li><a href="#Step4">Step 4 - Bonus: How to OC your GPU</a>
+			  	<ul>
+			    	<li><a href="#Step4A">Step 4A - Setting up MSI Afterburner</a></li>
+			    	<li><a href="#Step4B">Step 4B - Settings for Lyra2rev2</a></li>
+			  	</ul>
+			</li>
+		</ul>
+	</div>
+
+	<a name="Step1"></a>
+	<h2>Step 1 - Preparing the wallets</h2>
+	<p>Before you can start your mining adventure, you’ll need to download some wallets. These will allow you to access your currencies when you’ve mined them. We’ll need two wallets: One for Vertcoin and one for Unitus.</p>
+
+		<a name="Step1A"></a>
+		<h3>Step 1A - Vertcoin wallet</h3>
+		<p>There are several options available here: Vertcoin Core, Electrum-VTC or Nano Ledger S. This guide will focus on the official Vertcoin Core wallet. The process for other wallets should be similar.</p>
+		<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your VTC payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
+		<p>Point of note here: Easy Mine supports legacy, segwit and bech32 addresses. However, legacy addresses (starting with V) are recommended as these are currently the only type able to sign messages.</p>
+		<p>The Vertcoin Core wallet can be found <a href="https://vertcoin.org/download/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+
+		<img src="images/step1a/step1.png" />
+		<p>The first time you launch the Vertcoin Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Vertcoin</b></p>
+
+		<img src="images/step1a/step2.png" />
+		<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
+		<img src="images/step1a/step3.png" />
+		<p>Currently, we need to do some debug-console magic to generate a legacy address, so this step might be simplified at the time you’re reading this guide. Go to help>Debug Window</p>
+		<img src="images/step1a/step3a.png" />
+		<p>Then paste the following line at the console input (at the bottom) and press enter. The newly generated address will appear on screen and can be found in the next step.<br /><b>getnewaddress "EasyMine" legacy</b></p>
+		<img src="images/step1a/step4.png" />
+		<p>If you go to File>Receiving addresses… you’ll be presented with a screen with your newly created legacy address. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital V and is a randomized string of 34 characters, e.g. <b>VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</b></p>
+
+		<a name="Step1B"></a>
+		<h3>Step 1B - Unitus wallet</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+	<a href="#top">Back to top</a>
+
+	<a name="Step2"></a>
+	<h2>Step 2 - Setting up your Miner</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+		<a name="Step2A"></a>
+		<h3>Step 2A - CCminer for Nvidia - Latest release</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+			<a name="Step2A1"></a>
+			<h4>Step 2A.1 - Temporarily disable Windows Defender and add CCminer to the Exceptions</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+			<a name="Step2A2"></a>
+			<h4>Step 2A.2 - Setting up the actual miner, bat files and such</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+			<a name="Step2A3"></a>
+			<h4>Step 2A.3 - Running your miner - Congrats!</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+		<a name="Step2B"></a>
+		<h3>Step 2A - CCminer for Nvidia - Latest release</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+			<a name="Step2B1"></a>
+			<h4>Step 2B.1 - Setting up the actual miner, bat files and such</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+			<a name="Step2B2"></a>
+			<h4>Step 2B.2 - Running your miner - Congrats!</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+	<a href="#top">Back to top</a>
+
+	<a name="Step3"></a>
+	<h2>Step 3 - Adding your Unitus Address to Easy Mine</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+		
+		<a name="Step3A"></a>
+		<h3>Step 3A - Ledger specific steps</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+	<a href="#top">Back to top</a>
+
+	<a name="Step4"></a>
+	<h2>Step 4 - Bonus: How to OC your GPU</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+		<a name="Step4A"></a>
+		<h3>Step 4A - Setting up MSI Afterburner</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+
+		<a name="Step4B"></a>
+		<h3>Step 4B - Settings for Lyra2rev2</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+	<a href="#top">Back to top</a>
+
+</body>
+</html>
