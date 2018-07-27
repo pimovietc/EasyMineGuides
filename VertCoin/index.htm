@@ -62,26 +62,40 @@
 
 		<a name="Step1A"></a>
 		<h3>Step 1A - Vertcoin wallet</h3>
-		<p>There are several options available here: Vertcoin Core, Electrum-VTC or Nano Ledger S. This guide will focus on the official Vertcoin Core wallet. The process for other wallets should be similar.</p>
-		<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your VTC payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
-		<p>Point of note here: Easy Mine supports legacy, segwit and bech32 addresses. However, legacy addresses (starting with V) are recommended as these are currently the only type able to sign messages.</p>
-		<p>The Vertcoin Core wallet can be found <a href="https://vertcoin.org/download/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+			<p>There are several options available here: Vertcoin Core, Electrum-VTC or Nano Ledger S. This guide will focus on the official Vertcoin Core wallet. The process for other wallets should be similar.</p>
+			<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your VTC payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
+			<p>Point of note here: Easy Mine supports legacy, segwit and bech32 addresses. However, legacy addresses (starting with V) are recommended as these are currently the only type able to sign messages.</p>
+			<p>The Vertcoin Core wallet can be found <a href="https://vertcoin.org/download/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
 
-		<img src="images/step1a/step1.png" />
-		<p>The first time you launch the Vertcoin Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Vertcoin</b></p>
-
-		<img src="images/step1a/step2.png" />
-		<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
-		<img src="images/step1a/step3.png" />
-		<p>Currently, we need to do some debug-console magic to generate a legacy address, so this step might be simplified at the time you’re reading this guide. Go to help>Debug Window</p>
-		<img src="images/step1a/step3a.png" />
-		<p>Then paste the following line at the console input (at the bottom) and press enter. The newly generated address will appear on screen and can be found in the next step.<br /><b>getnewaddress "EasyMine" legacy</b></p>
-		<img src="images/step1a/step4.png" />
-		<p>If you go to File>Receiving addresses… you’ll be presented with a screen with your newly created legacy address. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital V and is a randomized string of 34 characters, e.g. <b>VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</b></p>
+			<img src="images/step1a/step1.png" />
+			<p>The first time you launch the Vertcoin Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Vertcoin</b></p>
+			<img src="images/step1a/step2.png" />
+			<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
+			<img src="images/step1a/step3.png" />
+			<p>Currently, we need to do some debug-console magic to generate a legacy address, so this step might be simplified at the time you’re reading this guide. Go to help>Debug Window</p>
+			<img src="images/step1a/step3a.png" />
+			<p>Then paste the following line at the console input (at the bottom) and press enter. The newly generated address will appear on screen and can be found in the next step.<br /><b>getnewaddress "EasyMine" legacy</b></p>
+			<img src="images/step1a/step4.png" />
+			<p>If you go to File>Receiving addresses… you’ll be presented with a screen with your newly created legacy address. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital V and is a randomized string of 34 characters, e.g. <b>VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</b></p>
+			<br />
+			<p><b>That wraps it up for the Vertcoin wallet, on to the next step!</b></p>
 
 		<a name="Step1B"></a>
 		<h3>Step 1B - Unitus wallet</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit dui quis est ultricies scelerisque. Duis varius sit amet enim eget auctor. Curabitur iaculis vulputate risus, nec rutrum lectus. Pellentesque malesuada elit at nulla suscipit tincidunt. Pellentesque ut sollicitudin mi. Sed tincidunt lacinia ante, eleifend interdum orci imperdiet at. Cras blandit nisl faucibus velit imperdiet, non elementum felis sollicitudin. Vivamus venenatis posuere eros dignissim consectetur. Morbi dignissim purus nec magna aliquet aliquam. Mauris sit amet elit ipsum. Praesent sodales tortor eu fermentum euismod. Integer aliquet orci eget pellentesque malesuada. Vivamus eu massa vitae tellus consequat finibus ac non quam. Integer non arcu elit. Cras vulputate urna quis varius finibus. Suspendisse consequat eros at nisl sollicitudin facilisis.</p>
+			<p>The Unitus Wallet can be found <a href="https://unituscurrency.com/#wallets">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+
+			<img src="images/step1b/step1.png" />
+			<p>The first time you launch the Unitus wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Unitus</b></p>
+			<img src="images/step1b/step2.png" />
+			<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
+			<img src="images/step1b/step3.png" />
+			<p>If you go to File>Receiving addresses… you’ll be able to generate a new UIS address.</p>
+			<img src="images/step1b/step4.png" />
+			<p>Give it a fancy name like “EasyMine” and press ok. The wallet will then generate an address.</p>
+			<img src="images/step1b/step5.png" />
+			<p>Lastly, you may copy the address and save it for use later. We’ll be needing this address when we’re linking it to our miner! The address will be a string of 34 characters starting with a capital U, e.g. <b>Ui67Stxp5ZumXtJYgB8P465vn6Gm4asunu</b></p>
+			<br />
+			<p><b>That wraps up the wallet set ups, and now we can start working on our miner!</b></p>
 	<a href="#top">Back to top</a>
 
 	<a name="Step2"></a>
