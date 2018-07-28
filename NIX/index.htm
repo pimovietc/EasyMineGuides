@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>How to mine VTC on Easy Mine</title>
+  <title>How to mine NIX on Easy Mine</title>
   <meta name="description" content="Guide on how to mine on Easy Mine">
 
   <link rel="stylesheet" href="default.css">
@@ -14,7 +14,7 @@
 <body>
 	<a name="top"></a>
 	<div class="header">
-		<h1>How to mine VTC and UIS on Easy Mine</h1>
+		<h1>How to mine NIX and UIS on Easy Mine</h1>
 	</div>
 	<div id="top" class="content">
 		<p>A short, step-by-step, visual guide to help you get started on mining VertCoin and Unitus! Before we start - note that this guide will explain how to merge-mine both coins, where you will receive the additional UIS at no extra cost!</p>
@@ -27,7 +27,7 @@
 		<ul class="toc_list">
 	  		<li><a href="#Step1">Step 1 - Preparing the wallets</a>
 			  	<ul>
-			    	<li><a href="#Step1A">Step 1A - Vertcoin wallet</a></li>
+			    	<li><a href="#Step1A">Step 1A - NIX Platform wallet</a></li>
 			    	<li><a href="#Step1B">Step 1B - Unitus wallet</a></li>
 			  	</ul>
 			</li>
@@ -66,17 +66,17 @@
 		<h1>Step 1 - Preparing the wallets</h1>
 	</div>
 	<div id="div_step1" class="content">
-		<p>Before you can start your mining adventure, you’ll need to download some wallets. These will allow you to access your currencies when you’ve mined them. We’ll need two wallets: One for Vertcoin and one for Unitus.</p>
+		<p>Before you can start your mining adventure, you’ll need to download some wallets. These will allow you to access your currencies when you’ve mined them. We’ll need two wallets: One for NIX Platform and one for Unitus.</p>
 
 		<a name="Step1A"></a>
-		<h3>Step 1A - Vertcoin wallet</h3>
-			<p>There are several options available here: Vertcoin Core, Electrum-VTC or Nano Ledger S. This guide will focus on the official Vertcoin Core wallet. The process for other wallets should be similar.</p>
-			<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your VTC payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
+		<h3>Step 1A - NIX Platform wallet</h3>
+			<p>There are several options available here: NIX Platform Core, Electrum-NIX or Nano Ledger S. This guide will focus on the official NIX Platform Core wallet. The process for other wallets should be similar.</p>
+			<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your NIX payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
 			<p>Point of note here: Easy Mine supports legacy, segwit and bech32 addresses. However, legacy addresses (starting with V) are recommended as these are currently the only type able to sign messages.</p>
-			<p>The Vertcoin Core wallet can be found <a href="https://vertcoin.org/download/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+			<p>The NIX Platform Core wallet can be found <a href="https://vertcoin.org/download/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
 
 			<img src="images/step1a/step1.png" />
-			<p>The first time you launch the Vertcoin Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Vertcoin</b></p>
+			<p>The first time you launch the NIX Platform Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\NIX Platform</b></p>
 			<img src="images/step1a/step2.png" />
 			<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
 			<img src="images/step1a/step3.png" />
@@ -85,7 +85,7 @@
 			<p>Then paste the following line at the console input (at the bottom) and press enter. The newly generated address will appear on screen and can be found in the next step.<br /><b>getnewaddress "EasyMine" legacy</b></p>
 			<img src="images/step1a/step4.png" />
 			<p>If you go to File>Receiving addresses… you’ll be presented with a screen with your newly created legacy address. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital V and is a randomized string of 34 characters, e.g. <b>VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</b></p>
-			<p><b>That wraps it up for the Vertcoin wallet, on to the next step!</b></p>
+			<p><b>That wraps it up for the NIX Platform wallet, on to the next step!</b></p>
 
 		<a name="Step1B"></a>
 		<h3>Step 1B - Unitus wallet</h3>
@@ -109,7 +109,7 @@
 		<h1>Step 2 - Setting up your Miner</h1>
 	</div>
 	<div id="div_step2" class="content">
-		<p>To mine Vertcoin, we’ll need a mining tool that uses the Lyra2rev2 algorithm. Depending on your graphics cards you’ll need different software. Depending on what type of GPU you have you’ll have to acquire different software.</p>
+		<p>To mine NIX Platform, we’ll need a mining tool that uses the Lyra2rev2 algorithm. Depending on your graphics cards you’ll need different software. Depending on what type of GPU you have you’ll have to acquire different software.</p>
 
 		<p>Sometimes Anti-Virus will falsely flag mining software as viruses. I can assure you these usually aren’t actual viruses. If the source you’re downloading from is legitimate (e.g. from the original github repros) then there is not much to worry about. However, if you don’t want to risk it, you can go to <b><a href="#Step2B">Step 2B</a></b> which uses an older version of CCminer which doesn’t get flagged by Windows Defender as a virus. Over at the Github repo, you can inspect the changes between the latest and the “virus-free” version to see that there is no suspicious code added, indicating that Windows Defender is calling a false-positive on the software.</p>
 
@@ -134,11 +134,11 @@
 			<p>After extraction (and restoring the .exe file), your Miner’s folder should look like this. We won’t be using the RUN-SOMETHING.cmd files which come with Ccminer, so we can throw them away.</p>
 			<img src="images/step2/step2_miner_2.png" />
 			<p>Open your favorite text editor (we’ll use Notepad), and paste the following without quotation marks:<br />
-				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u YOUR_VTC_ADDRESS.WORKER_NAME -p x”</b><br />
+				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u YOUR_NIX_ADDRESS.WORKER_NAME -p x”</b><br />
 				for example<br />
 				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG.donate -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
-			<p>If you want to, you can omit the worker name and only use your VTC address (note - do not use the . if you’re not using a worker name!)</p>
+			<p>If you want to, you can omit the worker name and only use your NIX address (note - do not use the . if you’re not using a worker name!)</p>
 
 			<a name="Step2A3"></a>
 			<h4>Step 2A.3 - Running your miner - Congrats!</h4>
@@ -149,7 +149,7 @@
 				for example: <a href="https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" target="_blank">https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</a><br />
 				After a while, you should be able to see some shares trickling in. These will eventually result in a payment to your Wallet!</p>
 
-			<p>If you see shares on your miner’s page, then you’re officially mining Vertcoin, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both VTC and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
+			<p>If you see shares on your miner’s page, then you’re officially mining NIX Platform, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both NIX and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
 
 		<a name="Step2B"></a>
 		<h3>Step 2B - CCminer for Nvidia - v2.2.5</h3>
@@ -161,11 +161,11 @@
 			<p>After extraction (and restoring the .exe file), your Miner’s folder should look like this. We won’t be using the RUN-SOMETHING.cmd files which come with CCminer, so we can throw them away. So don’t worry if you see more or less RUN-SOMETHING.cmd files.</p>
 			<img src="images/step2/step2_miner_2.png" />
 			<p>Open your favorite text editor (we’ll use Notepad), and paste the following without quotation marks:<br />
-				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u YOUR_VTC_ADDRESS.WORKER_NAME -p x”</b><br />
+				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u YOUR_NIX_ADDRESS.WORKER_NAME -p x”</b><br />
 				for example<br />
 				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG.donate -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
-			<p>If you want to, you can omit the worker name and only use your VTC address (note - do not use the . if you’re not using a worker name!)</p>
+			<p>If you want to, you can omit the worker name and only use your NIX address (note - do not use the . if you’re not using a worker name!)</p>
 
 			<a name="Step2B2"></a>
 			<h4>Step 2B.2 - Running your miner - Congrats!</h4>
@@ -176,7 +176,7 @@
 				for example: <a href="https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" target="_blank">https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</a><br />
 				After a while, you should be able to see some shares trickling in. These will eventually result in a payment to your Wallet!</p>
 
-			<p>If you see shares on your miner’s page, then you’re officially mining Vertcoin, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both VTC and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
+			<p>If you see shares on your miner’s page, then you’re officially mining NIX Platform, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both NIX and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
 		<a href="#top">Back to top</a>
 	</div>
 
@@ -184,7 +184,7 @@
 		<h1>Step 3 - Adding your Unitus Address to Easy Mine</h1>
 	</div>
 	<div id="div_step3" class="content">
-		<p>Next up - we want to add our UIS wallet to our EasyMine page to enable payouts for UIS! We’ll be needing the Unitus address, the Vertcoin Wallet and our EasyMine miner’s page. This guide explains the process from the Vertcoin Core Wallet. The process is similar for the other wallets. However, some things might look different.</p>
+		<p>Next up - we want to add our UIS wallet to our EasyMine page to enable payouts for UIS! We’ll be needing the Unitus address, the NIX Platform Wallet and our EasyMine miner’s page. This guide explains the process from the NIX Platform Core Wallet. The process is similar for the other wallets. However, some things might look different.</p>
 
 		<p><b>If you’re using a Ledger as your VertCoin wallet, the signing process is a bit different. You’ll want to skim through the “normal” guide, and then read <a href="#Step3A"><b>Step 3A</b></a> for Ledger specifics.</b></p>
 		<img src="images/step3/step3_page_1.png" />
@@ -194,12 +194,12 @@
 		<img src="images/step3/step3_page_2a.png" />
 		<p>At the bottom of the page, you’ll find all the settings you can change. In the very last field, you want to paste your UIS address. Before pressing “Save Changes”, we’ll first have to sign the actual message that we mentioned earlier.</p>
 		<img src="images/step3/step3_page_3.png" />
-		<p>This is where we need to switch back to the Vertcoin Core Wallet and navigate to <b>“Sign message”</b></p>
+		<p>This is where we need to switch back to the NIX Platform Core Wallet and navigate to <b>“Sign message”</b></p>
 		<img src="images/step3/step3_page_4.png" />
 		<p>Choose or paste the correct address in the first field, and paste the message in the second. After pressing <b>“Sign Message”</b>, a signature will be generated at the bottom. You’ll need to copy this string and paste it in the correct field on the <b>“Change Account Settings”</b> page and hit <b>“Save Changes”</b>.</p>
 		<img src="images/step3/step3_page_5.png" />
 		<p>After a while, you should be able to see the changes take effect on your Miner’s Page. It will take some time before your UIS address is validated. However, once it is you’ll start receiving UIS payouts!</p>
-		<p>Congratulations! You’ve successfully set up your miner, VTC and UIS wallets!</p>
+		<p>Congratulations! You’ve successfully set up your miner, NIX and UIS wallets!</p>
 		
 		<a name="Step3A"></a>
 		<h3>Step 3A - Ledger specific steps</h3>
@@ -207,7 +207,7 @@
 			<p><b>Also a side note - If you’re mining directly to the Ledger, please use a high payout threshold. This will make it so you only receive a single payout per day and will help alleviate the amount of traffic that Ledger has to process!</b></p>
 			
 			<img src="images/step3/ledger_step1.png" />
-			<p>After opening your VTC wallet on your Ledger, navigate to <b>Settings</b> and open <b>Tools</b>.</p>
+			<p>After opening your NIX wallet on your Ledger, navigate to <b>Settings</b> and open <b>Tools</b>.</p>
 			<img src="images/step3/ledger_step2.png" />
 			<p>From this menu, go to <b>“Sign message”</b></p>
 			<img src="images/step3/ledger_step3.png" />
@@ -236,7 +236,7 @@
 		<a name="Step4B"></a>
 		<h3>Step 4B - Settings for Lyra2rev2</h3>
 		<p>For every mining algorithm, the hardware requirements are different and thus benefit differently from different OC settings. As there are a lot of factors that are out of our control that affect the effectiveness of certain settings, we can only give rules of thumb.</p>
-			<p>Lyra2rev2 (the algorithm used for VTC) is very heavy on the core side and very light on the memory side. Therefore, it is in your interest to increase the core clock frequency by as much as possible and the memory clock not so much. I personally tend to decrease the Power Limit to 70% to decrease the power draw, making my rigs more efficient (more hashes/Watt).</p>
+			<p>Lyra2rev2 (the algorithm used for NIX) is very heavy on the core side and very light on the memory side. Therefore, it is in your interest to increase the core clock frequency by as much as possible and the memory clock not so much. I personally tend to decrease the Power Limit to 70% to decrease the power draw, making my rigs more efficient (more hashes/Watt).</p>
 			<p>In my experience, my hashrate isn’t affected by dropping the memory clock by a couple of 100 MHz. So decrease the memory clock. This slightly decreases the power draw, thus making it possible to increase the core clock by a little bit more. How to balance this is something you’ll have to test by small increments (during an extensive period) to see what works best for your setup. It is important to work in small steps, as your system might crash when taking large steps at once.</p>
 
 			<img src="images/step4/OC_default.png" />
