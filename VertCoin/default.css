@@ -32,7 +32,6 @@ img {
 }
 
 #toc_container {
-    display: table;
 }
 
 #toc_container li, #toc_container ul, #toc_container ul li{
@@ -40,9 +39,7 @@ img {
 }
 
 .content {
-	max-width: 800px;
 	padding: 10px;
-	width: 50%;
 
     margin: auto;
     background-color: #eee;
@@ -58,9 +55,7 @@ img {
 
 .header {
 	height: 2em;
-	max-width: 800px;
 	padding: 10px;
-	width: 50%;
 
     margin: auto;
     background-color: #078859;
@@ -69,4 +64,9 @@ img {
     border-color: #078859;
     border-top-right-radius: .25rem;
     border-top-left-radius: .25rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
 }
