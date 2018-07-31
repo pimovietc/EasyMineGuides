@@ -132,7 +132,7 @@ img {
 #generate input {
     border-style: solid;
     border-width: 1px;
-    border-color: #078859;
+    border-color: #AE9866;
     padding-left: 10px;
     margin-left: 20px;
     border-radius: .25rem;
@@ -141,7 +141,7 @@ img {
 #generate textarea {
     border-style: solid;
     border-width: 1px;
-    border-color: #078859;
+    border-color: #AE9866;
     padding-left: 10px;
     margin-left: 20px;
     border-radius: .25rem;
@@ -152,7 +152,7 @@ img {
 }
 
 #generate .submit {
-    background-color: #078859;
+    background-color: #AE9866;
     font-size: 1.5em;
     color: #eee;
     font-weight: bolder;
@@ -172,7 +172,7 @@ img {
     display: inline-block;
     border-style: solid;
     border-width: 1px;
-    border-color: #078859;
+    border-color: #AE9866;
     border-radius: .25rem;
     margin-left: 20px;
 }
