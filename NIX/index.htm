@@ -8,6 +8,7 @@
   <meta name="description" content="Guide on how to mine on Easy Mine">
 
   <link rel="stylesheet" href="default.css">
+  <script src="../generate.js"></script>
 
 </head>
 
@@ -21,6 +22,30 @@
 				<td class="td_img" align="right"><a href="https://nix.easymine.online/" target="_blank"><img src="..\images\nix.png" id="EasyMine" /></a></td>
 			</tr>
 		</table>
+	</div>
+
+	<div class="main">
+	<a name="top"></a>
+	<div class="header">
+		<h1>How to mine VTC and UIS on Easy Mine</h1>
+	</div>
+	<div id="top" class="content">
+		<p>A comprehensive, step-by-step, visual guide to help you get started on mining VertCoin and Unitus! Before we start - note that this guide will explain how to merge-mine both coins, where you will receive the additional UIS at no extra cost!</p>
+	</div>
+
+	<a name="Generate"></a>
+	<div class="header">
+		<h1>Generate BAT file</h1>
+	</div>
+	<div id="generate" class="content">
+		<p>With the form below you can generate the BAT file for you miner, which you'll need to start it. The top field takes your Miner's address and the second field (optionally) a worker name. Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
+		<form>
+			<input type="text" class="field" name="address" id="address" maxlength="34" value="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG"><br />
+			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br /><br />
+			<div id="submitdiv"><button type="button" class="submit" onclick="download()">Download BAT</button></div><br /><br />
+			<textarea id="output" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
+			<p>Clicking the textfield will copy it to clipboard.</p>
+		</form>
 	</div>
 
 	<div class="main">
@@ -148,6 +173,7 @@
 				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2-nix.easymine.online:10000 -u NSP9PpxChtdGNs4E5ajn15w6ZuDMKAiF5L.donate -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
 			<p>If you want to, you can omit the worker name and only use your NIX address (note - do not use the . if you’re not using a worker name!)</p>
+			<p><b>Alternatively you can generate your BAT file over <a href="#generate">here</a>.</b></p>
 
 			<a name="Step2A3"></a>
 			<h4>Step 2A.3 - Running your miner - Congrats!</h4>
@@ -175,6 +201,7 @@
 				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG.donate -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
 			<p>If you want to, you can omit the worker name and only use your NIX address (note - do not use the . if you’re not using a worker name!)</p>
+			<p><b>Alternatively you can generate your BAT file over <a href="#generate">here</a>.</b></p>
 
 			<a name="Step2B2"></a>
 			<h4>Step 2B.2 - Running your miner - Congrats!</h4>
