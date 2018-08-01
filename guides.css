@@ -16,16 +16,11 @@ table {
 }
 
 html{font-family: Calibri, Arial, sans-serif; overflow-y:scroll; min-width:1000px}
-body{
-    background-image: linear-gradient(rgb(70, 88, 135), rgb(39, 49, 76));
-    color:#444;
-    font-size:14px;
-    line-height:1.5em
-}
+body{font-size:14px; line-height:1.5em}
 
 h1, h2, h3, h4{margin: 0 .833em; font-weight:bold; line-height:1em; }
-h1, .h1{font-size:2em; color: #eee;}
-h2, .h2{font-size:1.6em; color: #fff}
+h1, .h1{font-size:2em;}
+h2, .h2{font-size:1.6em;}
 h3, .h3{font-size:1.4em; font-weight:lighter}
 h4, .h4{font-size:1.2em; font-weight:lighter; font-style: italic;}
 
@@ -40,8 +35,8 @@ a:hover, a:focus{text-decoration:none}
 a:hover, a:active{outline:none}
 
 img {
-	max-width: calc(100% - 20px);
-	display: block;
+    max-width: calc(100% - 20px);
+    display: block;
     margin: 0 auto;
 
 }
@@ -51,13 +46,11 @@ img {
 }
 
 .content {
-	padding: 10px;
+    padding: 10px;
 
     margin: auto;
-    background-color: #eee;
     border-style: solid;
     border-width: 1px;
-    border-color: #236DDE;
     border-bottom-left-radius: .25rem;
     border-bottom-right-radius: .25rem;
 
@@ -66,14 +59,12 @@ img {
 }
 
 .header {
-	height: 2em;
-	padding: 10px;
+    height: 2em;
+    padding: 10px;
 
     margin: auto;
-    background-image: linear-gradient(to left, rgb(70, 88, 135), rgb(35, 109, 222));
     border-style: solid;
     border-width: 1px;
-    border-color: #236DDE;
     border-top-right-radius: .25rem;
     border-top-left-radius: .25rem;
 }
@@ -85,8 +76,8 @@ img {
 }
 
 .navbar {
-    overflow: hidden;
     background-color: #343a40;
+    overflow: hidden;
     position: fixed;
     top: 0;
     width: 99%;
@@ -134,7 +125,6 @@ img {
 #generate input {
     border-style: solid;
     border-width: 1px;
-    border-color: #236DDE;
     padding-left: 10px;
     margin-left: 20px;
     border-radius: .25rem;
@@ -143,7 +133,6 @@ img {
 #generate textarea {
     border-style: solid;
     border-width: 1px;
-    border-color: #236DDE;
     padding-left: 10px;
     margin-left: 20px;
     border-radius: .25rem;
@@ -154,13 +143,10 @@ img {
 }
 
 #generate .submit {
-    background-color: #236DDE;
     font-size: 1.5em;
-    color: #eee;
     font-weight: bolder;
     border-style: solid;
     border-width: 1px;
-    border-color: #eee;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: .25rem;
@@ -174,7 +160,6 @@ img {
     display: inline-block;
     border-style: solid;
     border-width: 1px;
-    border-color: #236DDE;
     border-radius: .25rem;
     margin-left: 20px;
 }

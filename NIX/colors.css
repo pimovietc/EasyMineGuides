@@ -1,0 +1,44 @@
+:root {
+    --colorbg: #111;
+    --colortheme: #236DDE;
+    --colorlight: #eee;
+    --colortext: #444;
+    --bggradient: linear-gradient(to left, rgb(70, 88, 135), rgb(35, 109, 222));
+}
+
+body{
+    background-image: linear-gradient(rgb(70, 88, 135), rgb(39, 49, 76));
+    color: var(--colortext);
+}
+
+h1, .h1{color: var(--colorlight);}
+h2, .h2{color: #fff}
+
+
+.content {
+    background-color: var(--colorlight);
+    border-color: var(--colortheme);
+}
+
+.header {
+    background-image: var(--bggradient);
+    border-color: var(--colortheme);
+}
+
+#generate input {
+    border-color: var(--colortheme);
+}
+
+#generate textarea {
+    border-color: var(--colortheme);
+}
+
+#generate .submit {
+    background-color: var(--colortheme);
+    color: var(--colorlight);
+    border-color: var(--colorlight);
+}
+
+#submitdiv {
+    border-color: var(--colortheme);
+}
