@@ -4,6 +4,9 @@ function download(coin) {
 	var worker = document.getElementById('worker').value;
 	var addwork;
   var bashfile;
+  var CPU = 0; //if CPU is 1 then cpuminer is used
+  var algo; //algo is set for CPU to differentiate
+  var zzz; //zzz is cpuminer type
 
 	addwork = encodeURIComponent(address)
 	if (encodeURIComponent(worker)) {
@@ -18,9 +21,22 @@ function download(coin) {
     pool = 'lyra2-nix.easymine.online:10000';
   } else if (coin=='MONA') {
     pool = 'lyra2-monacoin.easymine.online:7000';
+  } else if (coin=='BSTY') {
+    pool = 'yescrypt.easymine.online:6500';
+    CPU = 1;
+    algo = 'yescrypt';
+    zzz = document.getElementById('cpu-zzz').value;
   }
 
-  bashfile = 'ccminer-x64 -a lyra2v2 -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
+  if (CPU) {
+    if (algo=='yescrypt') {
+      bashfile = 'cpuminer-' + zzz + '.exe -a yescrypt -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
+    } else {
+      bashfile = 'cpuminer-' + zzz + '.exe -a yescrypt -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
+    }
+  } else {
+    bashfile = 'ccminer-x64 -a lyra2v2 -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
+  }
 
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + bashfile);
   

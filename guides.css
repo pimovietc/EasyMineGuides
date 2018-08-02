@@ -122,15 +122,7 @@ img {
     
 }
 
-#generate input {
-    border-style: solid;
-    border-width: 1px;
-    padding-left: 10px;
-    margin-left: 20px;
-    border-radius: .25rem;
-}
-
-#generate textarea {
+#generate input, #generate textarea, select {
     border-style: solid;
     border-width: 1px;
     padding-left: 10px;
@@ -163,3 +155,13 @@ img {
     border-radius: .25rem;
     margin-left: 20px;
 }
+
+.in_guide_table {
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.in_guide_table th {
+    text-align: left;
+}
+

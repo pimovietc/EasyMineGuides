@@ -1,12 +1,13 @@
 :root {
     --colorbg: #111;
-    --colortheme: #078859;
+    --colortheme: #C29F43;
     --colorlight: #eee;
     --colortext: #444;
+    --bggradient: linear-gradient( to left, #F6DA7E, #C29F43 );
 }
 
 body{
-    background-color: var(--colorbg);
+    background-image: linear-gradient( #8e9eab, #eef2f3 );
     color: var(--colortext);
 }
 
@@ -22,8 +23,9 @@ h2, .h2{color: #fff}
 }
 
 .header {
-    background-color: var(--colortheme);
+    background-image: var(--bggradient);
 }
+
 
 #generate .submit {
     background-color: var(--colortheme);
