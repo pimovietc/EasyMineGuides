@@ -14,7 +14,7 @@ body{
 h1, .h1{color: var(--colorlight);}
 h2, .h2{color: #fff}
 
-.content, .header, #generate input, #generate textarea, #submitdiv {
+.content, .header, #generate input, #generate textarea, #submitdiv, select {
     border-color: var(--colortheme);
 }
 

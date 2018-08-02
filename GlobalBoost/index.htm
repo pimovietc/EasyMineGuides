@@ -39,7 +39,36 @@
 		<h1>Generate BAT file</h1>
 	</div>
 	<div id="generate" class="content">
-		<p>With the form below you can generate the BAT file for you miner, which you'll need to start it. If you add this file to the folder that contains the CCminer then you're ready to start mining. The top field takes your Miner's address and the second field (optionally) a worker name. Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
+		<p>With the form below you can generate the BAT file for you miner, which you'll need to start it. If you add this file to the folder that contains the CPUminer then you're ready to start mining. The top field takes your Miner's address, the second field (optionally) a worker name and the dropdown menu selects which executable to use. Below we provide a table that can be used as a rule of thumb however, we advise that you try out the different variants for your CPU yourself as individual results may vary.</p>
+
+		<table class="in_guide_table">
+				<tr>
+					<th>Executable Name</th>
+					<th>Architecture Name</th>
+				</tr>
+				<tr>
+					<td>cpuminer-sse2.exe</td>
+					<td>Core 2, Nehalem</td>
+				</tr>
+				<tr>
+					<td>cpuminer-aes-sse42.exe</td>
+					<td>Westmere, Sandy/Ivy Bridge </td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx.exe</td>
+					<td>Sandy/Ivy Bridge</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2.exe</td>
+					<td>Haswell, Sky/Kaby/Coffee Lake</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2-sha.exe</td>
+					<td>Ryzen</td>
+				</tr>
+			</table>
+
+		<p>Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
 		<form>
 			<input type="text" class="field" name="address" id="address" maxlength="34" value="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG"><br />
 			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
@@ -74,15 +103,6 @@
 	    		</ul>
 	    	</li>
 			<li><a href="#Step3">Step 3 - Adding your Unitus Address to Easy Mine</a>
-			  	<ul>
-			    	<li><a href="#Step3A">Step 3A - Ledger specific steps</a></li>
-			  	</ul>
-			</li>
-			<li><a href="#Step4">Step 4 - Bonus: How to OC your GPU</a>
-			  	<ul>
-			    	<li><a href="#Step4A">Step 4A - Setting up MSI Afterburner</a></li>
-			    	<li><a href="#Step4B">Step 4B - Settings for Lyra2rev2</a></li>
-			  	</ul>
 			</li>
 		</ul>
 	</div>
@@ -135,12 +155,12 @@
 	</div>
 	<div id="div_step2" class="content">
 		<p>To mine GlobalBoost, we’ll need a mining tool that uses the Yescrypt algorithm. We will use the latest cpuminer-opt release. You can find this release on the JayDDee/cpuminer-opt github or you can directly find it here: <a href="https://github.com/JayDDee/cpuminer-opt/releases/" target="_blank">https://github.com/JayDDee/cpuminer-opt/releases/</a>.</p>
-		<p>Note make sure you download the <b>cpuminer-opt-X.X.X.X-windows.zip</b> file, that archive contains a precompiled version of the miner.</p>
+		<p>Note make sure you download the <b>cpuminer-opt-X.X.X.X-windows.zip</b> file, that archive contains precompiled versions of the miner.</p>
 
 			<a name="Step2.1"></a>
 			<h4>Step 2.1 - Setting up the actual miner, bat files and such</h4>
 			<img src="images/step2/step2_miner_1.png" />
-			<p>After extraction, your Miner’s folder should look like this. Depending on your CPU you will need a different executable.</p>
+			<p>After extraction, your Miner’s folder should look like this. Depending on your CPU you should use a different executable. Below we provide a table that can be used as a rule of thumb however, we advise that you try out the different variants for your CPU yourself as individual results may vary.</p>
 			<table class="in_guide_table">
 				<tr>
 					<th>Executable Name</th>
@@ -169,9 +189,9 @@
 			</table>
 			<img src="images/step2/step2_miner_2.png" />
 			<p>Open your favorite text editor (we’ll use Notepad), and paste the following without quotation marks:<br />
-				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u YOUR_BSTY_ADDRESS.WORKER_NAME -p x”</b><br />
+				<b>“EXECUTABLE -a yescrypt -o stratum+tcp://yescrypt.easymine.online:6500 -u YOUR_BSTY_ADDRESS.WORKER_NAME -p x”</b><br />
 				for example<br />
-				<b>“ccminer-x64 -a lyra2v2 -o stratum+tcp://lyra2.easymine.online:5000 -u VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG.donate -p x”</b><br />
+				<b>“cpuminer-sse2.exe -a yescrypt -o stratum+tcp://yescrypt.easymine.online:6500 -u YOUR_BSTY_ADDRESS -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
 			<p>If you want to, you can omit the worker name and only use your BSTY address (note - do not use the . if you’re not using a worker name!)</p>
 			<p><b>Alternatively you can generate your BAT file over <a href="#generate">here</a>.</b></p>
@@ -181,8 +201,8 @@
 			<img src="images/step2/step2_miner_3.png" />
 			<p>You can now launch your miner by double clicking on EasyMine.bat (the extension might be hidden!). If everything is working correctly, you should start seeing shares being accepted.</p>
 			<img src="images/step2/step2_miner_4.png" />
-			<p>Lastly, you’d want to verify if everything is working by going to <b>https://vertcoin.easymine.online/miner/YOUR_ADDRESS</b><br />
-				for example: <a href="https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" target="_blank">https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</a><br />
+			<p>Lastly, you’d want to verify if everything is working by going to <b>https://globalboost.easymine.online/miner/YOUR_ADDRESS</b><br />
+				for example: <a href="https://globalboost.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" target="_blank">https://globalboost.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG</a><br />
 				After a while, you should be able to see some shares trickling in. These will eventually result in a payment to your Wallet!</p>
 
 			<p>If you see shares on your miner’s page, then you’re officially mining GlobalBoost, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both BSTY and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
@@ -195,9 +215,8 @@
 	<div id="div_step3" class="content">
 		<p>Next up - we want to add our UIS wallet to our EasyMine page to enable payouts for UIS! We’ll be needing the Unitus address, the GlobalBoost Wallet and our EasyMine miner’s page. This guide explains the process from the GlobalBoost Core Wallet. The process is similar for the other wallets. However, some things might look different.</p>
 
-		<p><b>If you’re using a Ledger as your GlobalBoost wallet, the signing process is a bit different. You’ll want to skim through the “normal” guide, and then read <a href="#Step3A"><b>Step 3A</b></a> for Ledger specifics.</b></p>
 		<img src="images/step3/step3_page_1.png" />
-		<p>Under <b>“Miner General Information”</b>, locate the blue pencil next to <b>“Payout Address”</b>. This will take you directly to <i>https://vertcoin.easymine.online/settings/YOUR_ADDRESS</i>, which is where you can change your account settings, including your UIS payout address.</p>
+		<p>Under <b>“Miner General Information”</b>, locate the blue pencil next to <b>“Payout Address”</b>. This will take you directly to <i>https://globalboost.easymine.online/settings/YOUR_ADDRESS</i>, which is where you can change your account settings, including your UIS payout address.</p>
 		<img src="images/step3/step3_page_2.png" />
 		<p>Each time you visit this page, it will show you a (newly generated) message that you need to sign with your wallet. Note that it also tells you that you MUST sign it from your miner’s address. This is important because most wallets will automatically generate new addresses (which are all linked together), and you have to pay attention that you’re using the correct one!</p>
 		<img src="images/step3/step3_page_2a.png" />
@@ -209,20 +228,7 @@
 		<img src="images/step3/step3_page_5.png" />
 		<p>After a while, you should be able to see the changes take effect on your Miner’s Page. It will take some time before your UIS address is validated. However, once it is you’ll start receiving UIS payouts!</p>
 		<p>Congratulations! You’ve successfully set up your miner, BSTY and UIS wallets!</p>
-		
-		<a name="Step3A"></a>
-		<h3>Step 3A - Ledger specific steps</h3>
-			<p>When mining directly to a Ledger wallet, the process of signing messages is a tiny bit different. The main idea is of course very similar, but the Ledger generates a larger message padded with some reiterated data which must be removed.</p>
-			<p><b>Also a side note - If you’re mining directly to the Ledger, please use a high payout threshold. This will make it so you only receive a single payout per day and will help alleviate the amount of traffic that Ledger has to process!</b></p>
-			
-			<img src="images/step3/ledger_step1.png" />
-			<p>After opening your BSTY wallet on your Ledger, navigate to <b>Settings</b> and open <b>Tools</b>.</p>
-			<img src="images/step3/ledger_step2.png" />
-			<p>From this menu, go to <b>“Sign message”</b></p>
-			<img src="images/step3/ledger_step3.png" />
-			<p>Now, in this step it is very <b>IMPORTANT</b> to select the correct address from the dropdown menu. Then copy the message from your EasyMine miner’s page and press Sign.</p>
-			<img src="images/step3/ledger_step4.png" />
-			<p>After a short moment, you’ll be presented with the signed message. You’ll see some headers to increase readability and some repetitions of the original message and your wallet’s address. However, on EasyMine we’re only  interested in the actual signature, which is the part left readable in the above image. So <b>IKWIwcg…LsNXDA=</b>.</p>
+
 		<a href="#top">Back to top</a>
 	</div>
 </div>
