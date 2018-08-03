@@ -26,6 +26,11 @@ function download(coin) {
     CPU = 1;
     algo = 'yescrypt';
     zzz = document.getElementById('cpu-zzz').value;
+  } else if (coin=='XMY') {
+    pool = 'yescrypt.easymine.online:6000';
+    CPU = 1;
+    algo = 'yescrypt';
+    zzz = document.getElementById('cpu-zzz').value;
   }
 
   if (CPU) {
