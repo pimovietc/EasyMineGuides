@@ -1,0 +1,185 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>How to mine UIS on Easy Mine</title>
+  <meta name="description" content="Guide on how to mine on Easy Mine">
+
+  <link rel="stylesheet" href="colors.css">
+  <link rel="stylesheet" href="../guides.css">
+  <script src="../generate.js"></script>
+
+</head>
+
+<body>
+	<div class="navbar">
+		<table>
+			<tr>
+				<td class="td_img"><a href="../"><img src="..\images\easymine.png" id="EasyGuides"/></a></td>
+				<td><a href="../"><h1>EasyGuides for EasyMine</h1></a></td>
+				<td align="right"><a href="https://unitus.easymine.online/" target="_blank"><h1>Unitus EasyMine</h1></a></td>
+				<td class="td_img" align="right"><a href="https://unitus.easymine.online/" target="_blank"><img src="..\images\unitus.png" id="EasyMine" /></a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="main">
+	<a name="top"></a>
+	<div class="header">
+		<h1>How to mine UIS on Easy Mine</h1>
+	</div>
+	<div id="top" class="content">
+		<p>A comprehensive, step-by-step, visual guide to help you get started on mining Unitus!</p>
+	</div>
+
+	<a name="Generate"></a>
+	<div class="header">
+		<h1>Generate BAT file</h1>
+	</div>
+	<div id="generate" class="content">
+		<p>With the form below you can generate the BAT file for you miner, which you'll need to start it. If you add this file to the folder that contains the CPUminer then you're ready to start mining. The top field takes your Miner's address, the second field (optionally) a worker name and the dropdown menu selects which executable to use. Below we provide a table that can be used as a rule of thumb however, we advise that you try out the different variants for your CPU yourself as individual results may vary.</p>
+
+		<table class="in_guide_table">
+				<tr>
+					<th>Executable Name</th>
+					<th>Architecture Name</th>
+				</tr>
+				<tr>
+					<td>cpuminer-sse2.exe</td>
+					<td>Core 2, Nehalem</td>
+				</tr>
+				<tr>
+					<td>cpuminer-aes-sse42.exe</td>
+					<td>Westmere, Sandy/Ivy Bridge </td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx.exe</td>
+					<td>Sandy/Ivy Bridge</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2.exe</td>
+					<td>Haswell, Sky/Kaby/Coffee Lake</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2-sha.exe</td>
+					<td>Ryzen</td>
+				</tr>
+			</table>
+
+		<p>Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
+		<form>
+			<input type="text" class="field" name="address" id="address" maxlength="34" value="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz"><br />
+			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
+			<select id="cpu-zzz">
+			  <option value="sse2">cpuminer-sse2</option>
+			  <option value="avx">cpuminer-avx</option>
+			  <option value="avx2">cpuminer-avx2</option>
+			  <option value="avx2-sha">cpuminer-avx2-sha</option>
+			  <option value="aes-sse42">cpuminer-aes-sse42</option>
+			</select><br /><br />
+			<div id="submitdiv"><button type="button" class="submit" onclick="download('UIS')">Download BAT</button></div><br /><br />
+			<textarea id="output" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
+			<p>Clicking the textfield will copy it to clipboard.</p>
+		</form>
+	</div>
+
+	<div class="header">
+		<h1>Table of Contents</h1>
+	</div>
+	<div id="toc_container" class="content">
+		<ul class="toc_list">
+	  		<li><a href="#Step1">Step 1 - Unitus wallet</a></li>
+			<li><a href="#Step2">Step 2 - Setting up your Miner</a>
+	    		<ul>
+	    			<li><a href="#Step2.1">Step 2.1 - Setting up the actual miner, bat files and such</a></li>
+	    			<li><a href="#Step2.2">Step 2.2 - Running your miner - Congrats!</a></li>
+	    		</ul>
+	    	</li>
+		</ul>
+	</div>
+
+	<div class="header"><a name="Step1"></a>
+		<h1>Step 1 - Unitus wallet</h1>
+	</div>
+	<div id="div_step1" class="content">
+		<p>Before you can start your mining adventure, you’ll need to download the unitus wallet. This will allow you to access your currency when you’ve mined it.</p>
+
+			<p>The Unitus Wallet can be found <a href="https://unituscurrency.com/#wallet" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+
+			<img src="../images/unitus/step1.png" />
+			<p>The first time you launch the Unitus wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Unitus</b></p>
+			<img src="../images/unitus/step2.png" />
+			<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
+			<img src="../images/unitus/step3.png" />
+			<p>If you go to File>Receiving addresses… you’ll be able to generate a new UIS address.</p>
+			<img src="../images/unitus/step4.png" />
+			<p>Give it a fancy name like “EasyMine” and press ok. The wallet will then generate an address.</p>
+			<img src="../images/unitus/step5.png" />
+			<p>Lastly, you may copy the address and save it for use later. We’ll be needing this address when we’re linking it to our miner! The address will be a string of 34 characters starting with a capital U, e.g. <b>Ui67Stxp5ZumXtJYgB8P465vn6Gm4asunu</b></p>
+			<p><b>That wraps up the wallet set up, and now we can start working on our miner!</b></p>
+		<a href="#top">Back to top</a>
+	</div>
+
+	<div class="header"><a name="Step2"></a>
+		<h1>Step 2 - Setting up your Miner</h1>
+	</div>
+	<div id="div_step2" class="content">
+		<p>To mine Unitus, we’ll need a mining tool that uses the Argon2D algorithm. We will use the latest cpuminer-opt release. You can find the latest release on the JayDDee/cpuminer-opt github or you can directly find it here: <a href="https://github.com/JayDDee/cpuminer-opt/releases/" target="_blank">https://github.com/JayDDee/cpuminer-opt/releases/</a>.</p>
+		<p>Note make sure you download the <b>cpuminer-opt-X.X.X.X-windows.zip</b> file, that archive contains precompiled versions of the miner.</p>
+
+			<a name="Step2.1"></a>
+			<h4>Step 2.1 - Setting up the actual miner, bat files and such</h4>
+			<img src="images/step2/step2_miner_1.png" />
+			<p>After extraction, your Miner’s folder should look like this. Depending on your CPU you should use a different executable. Below we provide a table that can be used as a rule of thumb however, we advise that you try out the different variants for your CPU yourself as individual results may vary.</p>
+			<table class="in_guide_table">
+				<tr>
+					<th>Executable Name</th>
+					<th>Architecture Name</th>
+				</tr>
+				<tr>
+					<td>cpuminer-sse2.exe</td>
+					<td>Core 2, Nehalem</td>
+				</tr>
+				<tr>
+					<td>cpuminer-aes-sse42.exe</td>
+					<td>Westmere, Sandy/Ivy Bridge </td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx.exe</td>
+					<td>Sandy/Ivy Bridge</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2.exe</td>
+					<td>Haswell, Sky/Kaby/Coffee Lake</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2-sha.exe</td>
+					<td>Ryzen</td>
+				</tr>
+			</table>
+			<img src="images/step2/step2_miner_2.png" />
+			<p>Open your favorite text editor (we’ll use Notepad), and paste the following without quotation marks:<br />
+				<b>“EXECUTABLE -a yescrypt -o stratum+tcp://yescrypt.easymine.online:6000 -u YOUR_UIS_ADDRESS.WORKER_NAME -p x”</b><br />
+				for example<br />
+				<b>“cpuminer-sse2.exe -a yescrypt -o stratum+tcp://yescrypt.easymine.online:6000 -u UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz -p x”</b><br />
+				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
+			<p>If you want to, you can omit the worker name and only use your UIS address (note - do not use the . if you’re not using a worker name!)</p>
+			<p><b>Alternatively you can generate your BAT file over <a href="#generate">here</a>.</b></p>
+
+			<a name="Step2.2"></a>
+			<h4>Step 2.2 - Running your miner - Congrats!</h4>
+			<img src="images/step2/step2_miner_3.png" />
+			<p>You can now launch your miner by double clicking on EasyMine.bat (the extension might be hidden!). If everything is working correctly, you should start seeing shares being accepted.</p>
+			<img src="images/step2/step2_miner_4.png" />
+			<p>Lastly, you’d want to verify if everything is working by going to <b>https://unitus.easymine.online/miner/YOUR_ADDRESS</b><br />
+				for example: <a href="https://unitus.easymine.online/miner/UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz" target="_blank">https://unitus.easymine.online/miner/UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz</a><br />
+				After a while, you should be able to see some shares trickling in. These will eventually result in a payment to your Wallet!</p>
+
+			<p>If you see shares on your miner’s page, then you’re officially mining Unitus, congratulations!</p>
+		<a href="#top">Back to top</a>
+	</div>
+</div>
+</body>
+</html>

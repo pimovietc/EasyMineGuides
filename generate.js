@@ -31,13 +31,23 @@ function download(coin) {
     CPU = 1;
     algo = 'yescrypt';
     zzz = document.getElementById('cpu-zzz').value;
+  } else if (coin=='ARG') {
+    pool = 'argon-argentum.easymine.online:9000';
+    CPU = 1;
+    algo = 'argon2d';
+    zzz = document.getElementById('cpu-zzz').value;
+  } else if (coin=='UIS') {
+    pool = 'argon.easymine.online:3003';
+    CPU = 1;
+    algo = 'argon2d';
+    zzz = document.getElementById('cpu-zzz').value;
   }
 
   if (CPU) {
     if (algo=='yescrypt') {
       bashfile = 'cpuminer-' + zzz + '.exe -a yescrypt -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
-    } else {
-      bashfile = 'cpuminer-' + zzz + '.exe -a yescrypt -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
+    } else if (algo=='argon2d') {
+      bashfile = 'cpuminer-' + zzz + '.exe -a argon2d4096 -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
     }
   } else {
     bashfile = 'ccminer-x64 -a lyra2v2 -o stratum+tcp://' + pool + ' -u ' + addwork + ' -p x';
