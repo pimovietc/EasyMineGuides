@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td>cpuminer-sse2.exe</td>
-					<td>Core 2, Nehalem</td>
+					<td> 2, Nehalem</td>
 				</tr>
 				<tr>
 					<td>cpuminer-aes-sse42.exe</td>
@@ -70,7 +70,7 @@
 
 		<p>Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
 		<form>
-			<input type="text" class="field" name="address" id="address" maxlength="34" value="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR"><br />
+			<input type="text" class="field" name="address" id="address" maxlength="34" value="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4"><br />
 			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
 			<select id="cpu-zzz">
 			  <option value="sse2">cpuminer-sse2</option>
@@ -114,13 +114,13 @@
 		<p>Before you can start your mining adventure, you’ll need to download some wallets. These will allow you to access your currencies when you’ve mined them. We’ll need two wallets: One for Argentum and one for Unitus.</p>
 
 		<a name="Step1A"></a>
-		<h3>Step 1A - Argentum Core wallet</h3>
-			<p>This guide will focus on the official Argentum Core wallet. The process for other wallets should be similar.</p>
+		<h3>Step 1A - Argentum  wallet</h3>
+			<p>This guide will focus on the official Argentum  wallet. The process for other wallets should be similar.</p>
 			<p>If you really want to, it is possible to directly mine to an exchange deposit address. However, do realize that this does <b>NOT</b> allow you to sign messages (we’ll need this to claim our Unitus and modify payout thresholds). Another important point is that some exchanges change the deposit address, which will mean that you won’t receive your Argentum payout! Therefore, mining directly to an exchange is <b>NOT RECOMMENDED</b>.</p>
-			<p>The Argentum Core wallet can be found <a href="https://github.com/myriadteam/argentum/releases/" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
+			<p>The Argentum  wallet can be found <a href="https://github.com/argentumproject/argentum/releases" target="_blank">here</a>. After downloading the wallet for your operating system, you can start the installation process.</p>
 
 			<img src="images/step1a/step1.png" />
-			<p>The first time you launch the Argentum Core wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Argentumcoin</b></p>
+			<p>The first time you launch the Argentum  wallet, you may choose where the data is stored. By default, this is at <b>%appdata%\Argentumcoin</b></p>
 			<img src="images/step1a/step2.png" />
 			<p>Next up - The wallet will start to synchronize with the network. This will take a long time to finish. Therefore, I’d recommend leaving it synchronizing overnight. However, it is possible to continue while it is synchronizing.</p>
 			<img src="images/step1a/step3.png" />
@@ -128,8 +128,8 @@
 			<img src="images/step1a/step4.png" />
 			<p>Give it a fancy name like “EasyMine” and press ok. The wallet will then generate an address.</p>
 			<img src="images/step1a/step5.png" />
-			<p>Lastly, you may copy the address and save it for use later. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital M and is a randomized string of 34 characters, e.g. <b>MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR</b></p>
-			<p><b>That wraps it up for the Argentum Core wallet, on to the next step!</b></p>
+			<p>Lastly, you may copy the address and save it for use later. This is the address we’ll be needing to mine on EasyMine. The address should start with a capital A and is a randomized string of 34 characters, e.g. <b>AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4</b></p>
+			<p><b>That wraps it up for the Argentum  wallet, on to the next step!</b></p>
 
 		<a name="Step1B"></a>
 		<h3>Step 1B - Unitus wallet</h3>
@@ -167,7 +167,7 @@
 				</tr>
 				<tr>
 					<td>cpuminer-sse2.exe</td>
-					<td>Core 2, Nehalem</td>
+					<td> 2, Nehalem</td>
 				</tr>
 				<tr>
 					<td>cpuminer-aes-sse42.exe</td>
@@ -190,7 +190,7 @@
 			<p>Open your favorite text editor (we’ll use Notepad), and paste the following without quotation marks:<br />
 				<b>“EXECUTABLE -a argon2d4096 -o stratum+tcp://argon-argentum.easymine.online:9000 -u YOUR_ARG_ADDRESS.WORKER_NAME -p x”</b><br />
 				for example<br />
-				<b>“cpuminer-sse2.exe -a argon2d4096 -o stratum+tcp://argon-argentum.easymine.online:9000 -u FIXME -p x”</b><br />
+				<b>“cpuminer-sse2.exe -a argon2d4096 -o stratum+tcp://argon-argentum.easymine.online:9000 -u AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4 -p x”</b><br />
 				Then press Save As, give it a fancy name like EasyMine.bat (the extension is important!), and don’t forget to switch the Save as Type to <b>All Files</b>.
 			<p>If you want to, you can omit the worker name and only use your ARG address (note - do not use the . if you’re not using a worker name!)</p>
 			<p><b>Alternatively you can generate your BAT file over <a href="#generate">here</a>.</b></p>
@@ -201,7 +201,7 @@
 			<p>You can now launch your miner by double clicking on EasyMine.bat (the extension might be hidden!). If everything is working correctly, you should start seeing shares being accepted.</p>
 			<img src="images/step2/step2_miner_4.png" />
 			<p>Lastly, you’d want to verify if everything is working by going to <b>https://argentum.easymine.online/miner/YOUR_ADDRESS</b><br />
-				for example: <a href="https://argentum.easymine.online/miner/MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR" target="_blank">https://argentum.easymine.online/miner/MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR</a><br />
+				for example: <a href="https://argentum.easymine.online/miner/AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4" target="_blank">https://argentum.easymine.online/miner/AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4</a><br />
 				After a while, you should be able to see some shares trickling in. These will eventually result in a payment to your Wallet!</p>
 
 			<p>If you see shares on your miner’s page, then you’re officially mining Argentum, congratulations! You can now go to <a href="#Step3"><b>Step 3</b></a> to link your Unitus wallet to your Miner. If you don’t, you’ll still be mining both ARG and UIS. The UIS will be stored in your pending rewards until you either add a wallet or become inactive for too long.</p>
@@ -212,7 +212,7 @@
 		<h1>Step 3 - Adding your Unitus Address to Easy Mine</h1>
 	</div>
 	<div id="div_step3" class="content">
-		<p>Next up - we want to add our UIS wallet to our EasyMine page to enable payouts for UIS! We’ll be needing the Unitus address, the Argentum Wallet and our EasyMine miner’s page. This guide explains the process from the Argentum Core Wallet. The process is similar for the other wallets. However, some things might look different.</p>
+		<p>Next up - we want to add our UIS wallet to our EasyMine page to enable payouts for UIS! We’ll be needing the Unitus address, the Argentum Wallet and our EasyMine miner’s page. This guide explains the process from the Argentum  Wallet. The process is similar for the other wallets. However, some things might look different.</p>
 
 		<img src="images/step3/step3_page_1.png" />
 		<p>Under <b>“Miner General Information”</b>, locate the blue pencil next to <b>“Payout Address”</b>. This will take you directly to <i>https://argentum.easymine.online/settings/YOUR_ADDRESS</i>, which is where you can change your account settings, including your UIS payout address.</p>
@@ -221,7 +221,7 @@
 		<img src="images/step3/step3_page_2a.png" />
 		<p>At the bottom of the page, you’ll find all the settings you can change. In the very last field, you want to paste your UIS address. Before pressing “Save Changes”, we’ll first have to sign the actual message that we mentioned earlier.</p>
 		<img src="images/step3/step3_page_3.png" />
-		<p>This is where we need to switch back to the Argentum Core Wallet and navigate to <b>“Sign message”</b></p>
+		<p>This is where we need to switch back to the Argentum  Wallet and navigate to <b>“Sign message”</b></p>
 		<img src="images/step3/step3_page_4.png" />
 		<p>Choose or paste the correct address in the first field, and paste the message in the second. After pressing <b>“Sign Message”</b>, a signature will be generated at the bottom. You’ll need to copy this string and paste it in the correct field on the <b>“Change Account Settings”</b> page and hit <b>“Save Changes”</b>.</p>
 		<img src="images/step3/step3_page_5.png" />
