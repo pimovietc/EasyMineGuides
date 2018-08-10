@@ -10,7 +10,7 @@ function gethashrate(coin) {
   var target = 'https://vertcoin.easymine.online/miner/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG/'
   
   var name = "codemzy";
-  var url = "https://anyorigin.com/go?url=" + encodeURIComponent(target) + name + "&callback=?";
+  var url = "http://anyorigin.com/go?url=" + encodeURIComponent(target) + name + "&callback=?";
   $.get(url, function(response) {
     console.log(response);
   });
