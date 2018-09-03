@@ -1,0 +1,60 @@
+:root {
+    --colorbg: #888;
+    --colortheme: #343a40;
+    --colorlight: #eee;
+    --colortext: #444;
+}
+
+body{
+    background-color: var(--colorbg);
+    color: var(--colortext);
+}
+
+h1, .h1{color: var(--colorlight);}
+h2, .h2{color: #fff}
+
+.content, .header, #generate input, #generate textarea, #submitdiv {
+    border-color: var(--colortheme);
+}
+
+.content {
+    background-color: var(--colorlight);
+}
+
+.header {
+    background-color: var(--colortheme);
+}
+
+#generate .submit {
+    background-color: var(--colortheme);
+    color: var(--colorlight);
+    border-color: var(--colorlight);
+}
+
+.border {
+    border-color: var(--colortheme);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: .25rem;
+    margin-bottom: 10px;
+}
+
+table p {
+    font-size: 2em;
+}
+
+.coffee_img {
+    width: 10em;
+}
+
+.coffee_txt {
+    vertical-align: middle;
+}
+
+.coffee_txt p {
+    padding-left: 0;
+}
+
+.coffee_right {
+    text-align: right;
+}
