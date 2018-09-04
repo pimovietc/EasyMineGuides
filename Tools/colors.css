@@ -30,3 +30,11 @@ h2, .h2{color: #fff}
     color: var(--colorlight);
     border-color: var(--colorlight);
 }
+
+#cpu-zzz {
+    display: none;
+}
+
+#cpu-zzz-table {
+    display: none;
+}

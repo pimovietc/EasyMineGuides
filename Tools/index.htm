@@ -4,11 +4,12 @@
 <head>
   <meta charset="utf-8">
 
-  <title>How to mine VTC on Easy Mine</title>
-  <meta name="description" content="Guide on how to mine on Easy Mine">
+  <title>EasyTools for EasyGuides</title>
+  <meta name="description" content="EasyTools for EasyGuides">
 
   <link rel="stylesheet" href="colors.css">
   <link rel="stylesheet" href="../guides.css">
+  <script src="generate.js"></script>
 
 </head>
 
@@ -18,8 +19,8 @@
 			<tr>
 				<td class="td_img"><a href="../"><img src="..\images\easymine.png" id="EasyGuides"/></a></td>
 				<td><a href="../"><h1>EasyGuides for EasyMine</h1></a></td>
-				<td align="right"><a href="../Coffee" target="_blank"><h1>Buy me a Coffee!</h1></a></td>
-				<td class="td_img" align="right"><a href="../Coffee" target="_blank"><img src="images\coffee.png" id="EasyMine" /></a></td>
+				<td align="right"><a href="../Coffee"><h1>Buy me a Coffee!</h1></a></td>
+				<td class="td_img" align="right"><a href="../Coffee"><img src="images\coffee.png" id="EasyMine" /></a></td>
 			</tr>
 		</table>
 	</div>
@@ -27,52 +28,99 @@
 	<div class="main">
 	<a name="top"></a>
 	<div class="header">
-		<h1>How to mine VTC and UIS on Easy Mine</h1>
+		<h1>EasyTools for EasyGuides</h1>
 	</div>
 	<div id="top" class="content">
-		<p>A comprehensive, step-by-step, visual guide to help you get started on mining VertCoin and Unitus! Before we start - note that this guide will explain how to merge-mine both coins, where you will receive the additional UIS at no extra cost!</p>
+		<p>This page (will) contain(s) several different tools that work hand-in-hand with mining. Some tools might be of no use to you, others will be your lifesaver.</p>
+		<p>All the tools are free to use. However, if you find that a particular tool has been most helpful to you feel free to press on the '<a href="../Coffee" target="_blank">Buy me a Coffee!</a>' button in the top right hand corner.</p>
 	</div>
 
 	<div class="header">
-		<h1>Table of Contents</h1>
+		<h1>Available Tools</h1>
 	</div>
 	<div id="toc_container" class="content">
 		<ul class="toc_list">
-	  		<li><a href="#Step1">Step 1 - Preparing the wallets</a>
-			  	<ul>
-			    	<li><a href="#Step1A">Step 1A - Vertcoin wallet</a></li>
-			    	<li><a href="#Step1B">Step 1B - Unitus wallet</a></li>
-			  	</ul>
-			</li>
-			<li><a href="#Step2">Step 2 - Setting up your Miner</a>
-			  	<ul>
-			    	<li><a href="#Step2A">Step 2A - CCminer for Nvidia - Latest release</a>
-			    		<ul>
-			    			<li><a href="#Step2A1">Step 2A.1 - Temporarily disable Windows Defender and add CCminer to the Exceptions</a></li>
-			    			<li><a href="#Step2A2">Step 2A.2 - Setting up the actual miner, bat files and such</a></li>
-			    			<li><a href="#Step2A3">Step 2A.3 - Running your miner - Congrats!</a></li>
-			    		</ul>
-			    	</li>
-			    	<li><a href="#Step2B">Step 2B - CCminer for Nvidia - v2.2.5</a></li>
-			    		<ul>
-			    			<li><a href="#Step2B1">Step 2B.1 - Setting up the actual miner, bat files and such</a></li>
-			    			<li><a href="#Step2B2">Step 2B.2 - Running your miner - Congrats!</a></li>
-			    		</ul>
-			    	</li>
-			  	</ul>
-			</li>
-			<li><a href="#Step3">Step 3 - Adding your Unitus Address to Easy Mine</a>
-			  	<ul>
-			    	<li><a href="#Step3A">Step 3A - Ledger specific steps</a></li>
-			  	</ul>
-			</li>
-			<li><a href="#Step4">Step 4 - Bonus: How to OC your GPU</a>
-			  	<ul>
-			    	<li><a href="#Step4A">Step 4A - Setting up MSI Afterburner</a></li>
-			    	<li><a href="#Step4B">Step 4B - Settings for Lyra2rev2</a></li>
-			  	</ul>
-			</li>
+			<li><a href="#generator">BAT-file Generator</a></li>
+	  		<li><a href="#record">Recordkeeping</a></li>
+	  		<li><a href="#windowssettings">Windows Settings Script</a></li>
 		</ul>
+	</div>
+
+	<a name="generator"></a>
+	<div class="header">
+		<h1>BAT-file Generator</h1>
+	</div>
+	<div id="generate" class="content">
+		<p>This tool can generate a BAT file for CCminer or CPUminer-zzz to start and configure it. If you add this file to the same folder that contains the miner then you're ready to start mining.</p>
+		<p>Select the coin you wish to mine in the first field, the second field takes your Miner's address and the third field (optionally) a worker name. For CPU mining an additional field will appear where you can choose which instance of CPUminer-zzz you want to use, a table assisting you with this choice will also appear. Pressing <b>"Download BAT"</b> will initiate a download of the file itself, additionally it will put the content of this BAT in the text field below. Incase you want to create your own BAT file.</p>
+		<form>
+			<select id="cointype" onchange="change_form()">
+			  <option value="MONA">MonaCoin (GPU)</option>
+			  <option value="NIX">NIX Coin (GPU)</option>
+			  <option value="VTC">VertCoin (GPU)</option>
+			  <option value="ARG">Argentum (CPU)</option>
+			  <option value="XMY">Myriad (CPU)</option>
+			  <option value="UIS">Unitus (CPU)</option>
+			</select><br />
+			<input type="text" class="field" name="address" id="address" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp"><br />
+			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
+			<select id="cpu-zzz">
+			  <option value="sse2">cpuminer-sse2</option>
+			  <option value="avx">cpuminer-avx</option>
+			  <option value="avx2">cpuminer-avx2</option>
+			  <option value="avx2-sha">cpuminer-avx2-sha</option>
+			  <option value="aes-sse42">cpuminer-aes-sse42</option>
+			</select><br />
+			<div id="submitdiv"><button type="button" class="submit" onclick="download(document.getElementById('cointype').value)">Download BAT</button></div><br /><br />
+			<textarea id="output" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
+			<p>Clicking the textfield will copy it to clipboard.</p>
+		</form>
+
+		<div id="cpu-zzz-table">
+			<p>This table contains a guideline on which executuble to use depending on the type of CPU you have. However, these are only a rule of thumb and we advise you to try out several variants as individual results may vary!</p>
+			<table class="in_guide_table">
+				<tr>
+					<th>Executable Name</th>
+					<th>Architecture Name</th>
+				</tr>
+				<tr>
+					<td>cpuminer-sse2.exe</td>
+					<td> 2, Nehalem</td>
+				</tr>
+				<tr>
+					<td>cpuminer-aes-sse42.exe&nbsp;</td>
+					<td>Westmere, Sandy/Ivy Bridge </td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx.exe</td>
+					<td>Sandy/Ivy Bridge</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2.exe</td>
+					<td>Haswell, Sky/Kaby/Coffee Lake</td>
+				</tr>
+				<tr>
+					<td>cpuminer-avx2-sha.exe</td>
+					<td>Ryzen</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<a name="record"></a>
+	<div class="header">
+		<h1>TBA - Recordkeeping</h1>
+	</div>
+	<div id="top" class="content">
+		<p>In browser variant of my record keeping sheet. Maybe make executable for it?</p>
+	</div>
+
+	<a name="windowssettings"></a>
+	<div class="header">
+		<h1>TBA - Windows Settings Script</h1>
+	</div>
+	<div id="top" class="content">
+		<p>Script that disables updates, sets up weekly reboot, sets Afterburner settings (?)</p>
 	</div>
 </div>
 </body>

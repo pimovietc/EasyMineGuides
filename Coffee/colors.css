@@ -39,7 +39,7 @@ h2, .h2{color: #fff}
     margin-bottom: 10px;
 }
 
-table p {
+table p span {
     font-size: 2em;
 }
 
@@ -57,4 +57,29 @@ table p {
 
 .coffee_right {
     text-align: right;
+}
+
+.coffee_table tr:nth-child(even) {
+    text-align: right;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    line-height: 3em;
+}    
+
+ul li img {
+    float: left;
+    margin: 0 10px 10px 20px;
+    padding: 2px;
+    height: 3em;
+}
+
+li a {
+    text-decoration:none;
 }
