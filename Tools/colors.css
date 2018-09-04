@@ -13,6 +13,11 @@ body{
 h1, .h1{color: var(--colorlight);}
 h2, .h2{color: #fff}
 
+/* Allows for WIP features to be hidden on lve version */
+.hidden {
+    display: none;
+}
+
 .content, .header, #generate input, #generate textarea, #submitdiv {
     border-color: var(--colortheme);
 }
