@@ -18,7 +18,7 @@ h2, .h2{color: #fff}
     display: none;
 }
 
-.content, .header, #generate input, #generate textarea, #submitdiv {
+.content, .header, #generate input, #generate textarea, #record input, #record textarea, #submitdiv {
     border-color: var(--colortheme);
 }
 
@@ -30,10 +30,18 @@ h2, .h2{color: #fff}
     background-color: var(--colortheme);
 }
 
-#generate .submit {
+#generate .submit, #record .submit {
     background-color: var(--colortheme);
     color: var(--colorlight);
     border-color: var(--colorlight);
+}
+
+#record .field {
+    width: 4em;
+}
+
+#record .field.address {
+    width: 36%;
 }
 
 #cpu-zzz {
@@ -42,4 +50,12 @@ h2, .h2{color: #fff}
 
 #cpu-zzz-table {
     display: none;
+}
+
+#record textarea {
+    height: 9em;
+}
+
+#generate input, #generate textarea, #record input, #record textarea {
+    font-family: monospace;
 }

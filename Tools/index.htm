@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="colors.css">
   <link rel="stylesheet" href="../guides.css">
   <script src="generate.js"></script>
+  <script src="record.js"></script>
 
 </head>
 
@@ -62,8 +63,8 @@
 			  <option value="XMY">Myriad (CPU)</option>
 			  <option value="UIS">Unitus (CPU)</option>
 			</select><br />
-			<input type="text" class="field" name="address" id="address" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp"><br />
-			<input type="text" class="field" name="worker" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
+			<input type="text" class="field" id="address" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp"><br />
+			<input type="text" class="field" id="worker" maxlength="20" placeholder="Worker Name, max 20 characters"><br />
 			<select id="cpu-zzz">
 			  <option value="sse2">cpuminer-sse2</option>
 			  <option value="avx">cpuminer-avx</option>
@@ -108,18 +109,58 @@
 	</div>
 
 	<a name="record"></a>
-	<div class="header hidden">
+	<div class="header">
 		<h1>Recordkeeping</h1>
 	</div>
-	<div id="top" class="content hidden">
-		<p>In browser variant of my record keeping sheet. Maybe make executable for it?</p>
+	<div id="record" class="content">
+		<p>Bla bla explanation how it works...<br />Note that UIS is for the separate pool!<br />Generate a static/dynamic downloadble version for this?</p>
+		<form>
+			<p>Select which GPU currencies you are want to keep a record of:<br />
+				<label><input type="checkbox" name="cointype" value="MON" onchange="change_form_record()"> MonaCoin (GPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="NIX" onchange="change_form_record()"> NIX Coin (GPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="VTC" onchange="change_form_record()"> VertCoin (GPU)</input></label><br />
+				Select which CPU currencies you are want to keep a record of:<br />
+				<label><input type="checkbox" name="cointype" value="ARG" onchange="change_form_record()"> Argentum (CPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="XMY" onchange="change_form_record()"> Myriad (CPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="UIS" onchange="change_form_record()"> Unitus (CPU)</input></label><br />
+			</p>
+			<p class="hidden" id="p_coins">Enter your addresses for the chosen cryptocurrencies.
+			<input type="text" class="field address hidden" name="address" id="add_MON" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp">
+			<input type="text" class="field address hidden" name="address" id="add_NIX" maxlength="34" placeholder="NSP9PpxChtdGNs4E5ajn15w6ZuDMKAiF5L">
+			<input type="text" class="field address hidden" name="address" id="add_VTC" maxlength="34" placeholder="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" value="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG">
+			<input type="text" class="field address hidden" name="address" id="add_ARG" maxlength="34" placeholder="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4" value="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4">
+			<input type="text" class="field address hidden" name="address" id="add_XMY" maxlength="34" placeholder="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR">
+			<input type="text" class="field address hidden" name="address" id="add_UIS" maxlength="34" placeholder="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz">
+			</p>
+			<p>Choose/enter your fiat currency, your price per kWh and your rig's power consumption in Watt.<br />
+			<select id="fiat">
+			  <option value="EUR">EUR</option>
+			  <option value="USD">USD</option>
+			  <option value="GPB">GBP</option>
+			  <option value="AUD">AUD</option>
+			  <option value="CAD">CAD</option>
+			  <option value="RUB">RUB</option>
+			</select><br />
+			<input type="text" class="field" name="pwrcost" id="pwrcost" maxlength="6" value="0.18"><br />
+			<input type="text" class="field" name="pwrcons" id="pwrcons" maxlength="6" value="340"><br />
+			<select id="cpu-zzz">
+			  <option value="sse2">cpuminer-sse2</option>
+			  <option value="avx">cpuminer-avx</option>
+			  <option value="avx2">cpuminer-avx2</option>
+			  <option value="avx2-sha">cpuminer-avx2-sha</option>
+			  <option value="aes-sse42">cpuminer-aes-sse42</option>
+			</select>
+			<div id="submitdiv"><button type="button" class="submit" onclick="create_record()">Show Record</button></div><br /><br />
+			<textarea id="recordsheet" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
+			<p>Clicking the textfield will copy it to clipboard.</p>
+		</form>
 	</div>
 
 	<a name="windowssettings"></a>
 	<div class="header hidden">
 		<h1>Windows Settings Script</h1>
 	</div>
-	<div id="top" class="content hidden">
+	<div id="windowssettings" class="content hidden">
 		<p>Script that disables updates, sets up weekly reboot, sets Afterburner settings (?)</p>
 	</div>
 </div>
