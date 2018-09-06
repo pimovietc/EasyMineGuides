@@ -102,7 +102,7 @@ function create_record() {
   // List invalid addresses.
   for (var i=0, n=currencies.length;i<n;i++) {
     if (currencies[i].address.length != 34) {
-      sheet = sheet + 'ERROR - '+ currencies[i].coin + ' address is too short.\n';
+      sheet += 'ERROR - '+ currencies[i].coin + ' address is too short.\n';
     }
   }
   if (sheet != '0') {
@@ -117,17 +117,79 @@ function create_record() {
   // ACTUAL SHEET GEN STARTS HERE
 
   // Generate sheet
+  sheet += 'TEST OVERVIEW\n'
   for (var i=0, n=currencies.length;i<n;i++) {
     if (i<n-1) {
-      sheet = sheet + currencies[i].coin + ' ';
+      sheet += currencies[i].coin + ' ';
     } else {
-      sheet = sheet + currencies[i].coin;
+      sheet += currencies[i].coin;
     }
   }
   
-  sheet = sheet + '\nfiat ' + fiat + '\ncost ' + kWh + '\npower ' + PWR;
+  sheet += '\nfiat ' + fiat + '\ncost ' + kWh + '\npower ' + PWR + '\n\n';
 
   //remove '0' from string
   sheet = sheet.substr(1);
   document.getElementById('recordsheet').value = sheet;
+
+  json_easymine(doshit,'https://vertcoin.easymine.online/api/minertxhistory/VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG');
+  
+}
+
+// global variable
+var json_data;
+
+function doshit() {
+  payoutindice = [];
+  
+  // Find the indices where there are payouts in the tx history.
+  for (var i=0, n=json_data.tx.length;i<n;i++) {
+    if (json_data.tx[i].type == 'payout') {
+      payoutindice = payoutindice.concat(i);
+    }
+  }
+
+  // Remove all entries that are NOT on the indices (i.e. all non-payout entries)
+  for (var i=-2, n=payoutindice.length-1;i<n;n--) {
+    if (n == payoutindice.length-1) {
+      removeN = json_data.tx.length - payoutindice[n] - 1;
+      json_data.tx.splice(payoutindice[n]+1, removeN);
+    } else if (n==-1) {
+      removeN = payoutindice[n+1];
+      json_data.tx.splice(0, removeN);
+    }
+    else {
+      removeN = payoutindice[n+1] - payoutindice[n] - 1;
+      json_data.tx.splice(payoutindice[n]+1, removeN);
+    }
+  }
+
+  // Sum all 'amounts'
+  var sum = 0;
+  for (var i=0, n=json_data.tx.length;i<n;i++) {
+    sum += parseFloat(json_data.tx[i].amount);
+  }
+  sum = sum*-1;
+  console.log(sum);
+
+  //contains all payouts
+  console.log(json_data.tx);
+}
+
+
+// EasyMine JSON call
+function json_easymine(callback, targetUrl) {
+  var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+  fetch(proxyUrl + targetUrl)
+  .then(blob => blob.json())
+  .then(data => {
+    console.table(data);
+    json_data = data;
+    callback();
+    return data;
+  })
+  .catch(e => {
+    console.log(e);
+    return e;
+  });
 }
