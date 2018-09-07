@@ -113,30 +113,33 @@
 		<h1>Recordkeeping</h1>
 	</div>
 	<div id="record" class="content">
-		<p>Bla bla explanation how it works...<br />Note that UIS is for the separate pool!<br />Generate a static/dynamic downloadble version for this?</p>
+		<p>Below you'll find a form that allows you to generate a sheet shows you what your mining efforts are currently worth and what they were worth historically, i.e. how much it would be worth in fiat if you had sold every token at the moment you received it as a payout from the pool. At the moment it might not be necessary to keep track of the historic worth of your mining efforts, but this could change in the future if your government decides that mining is a taxable event. Even worse would be if they would implement this with retrospect! In any case it would be usefull information to have handy, to check whether or not your goverments prediction on your mining efforts is accurate.</p>
+		<p>By providing your miner's addresses that you use on EasyMine we can fetch your transaction history. Then the current and historic prices are fetched and the information is processed and an overview is generated.</p>		
+		<p><b>Note:</b> None of your data is saved on the server and the entire sheet is generated/computed client side. Down below a downloadable version of this form is provided so that you can run it locally if you desire to do so.</p>
+		<p><b>Note:</b> The Unitus address should only be included if you are mining on the separate unitus mining pool!</p>
 		<form>
 			<p>Select which GPU currencies you are want to keep a record of:<br />
 				<label><input type="checkbox" name="cointype" value="MON" onchange="change_form_record()"> MonaCoin (GPU)</input></label><br />
 				<label><input type="checkbox" name="cointype" value="NIX" onchange="change_form_record()"> NIX Coin (GPU)</input></label><br />
-				<label><input type="checkbox" name="cointype" value="VTC" onchange="change_form_record()"> VertCoin (GPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="VTC" onchange="change_form_record()" checked> VertCoin (GPU)</input></label><br />
 				Select which CPU currencies you are want to keep a record of:<br />
 				<label><input type="checkbox" name="cointype" value="ARG" onchange="change_form_record()"> Argentum (CPU)</input></label><br />
 				<label><input type="checkbox" name="cointype" value="XMY" onchange="change_form_record()"> Myriad (CPU)</input></label><br />
-				<label><input type="checkbox" name="cointype" value="UIS" onchange="change_form_record()"> Unitus (CPU)</input></label><br />
+				<label><input type="checkbox" name="cointype" value="UIS" onchange="change_form_record()" checked> Unitus (CPU)</input></label><br />
 			</p>
 			<p class="hidden" id="p_coins">Enter your addresses for the chosen cryptocurrencies.
-			<input type="text" class="field address hidden" name="address" id="add_MON" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp">
-			<input type="text" class="field address hidden" name="address" id="add_NIX" maxlength="34" placeholder="NSP9PpxChtdGNs4E5ajn15w6ZuDMKAiF5L">
-			<input type="text" class="field address hidden" name="address" id="add_VTC" maxlength="34" placeholder="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" value="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG">
-			<input type="text" class="field address hidden" name="address" id="add_ARG" maxlength="34" placeholder="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4" value="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4">
-			<input type="text" class="field address hidden" name="address" id="add_XMY" maxlength="34" placeholder="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR">
-			<input type="text" class="field address hidden" name="address" id="add_UIS" maxlength="34" placeholder="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz">
+			<input type="text" class="field address hidden" name="address" id="add_MON" maxlength="34" placeholder="MPRzNahQY1Ho1k9mV7ERbcw9iFwPQRYWRp" value="MUJ1nBxpAzdGdNhTN1x3MCtyeBa4DbdqpK"></input>
+			<input type="text" class="field address hidden" name="address" id="add_NIX" maxlength="34" placeholder="NSP9PpxChtdGNs4E5ajn15w6ZuDMKAiF5L" value="NL4dvzdB6NTgU9NLFg8HTyqMhziMqSo9W4"></input>
+			<input type="text" class="field address hidden" name="address" id="add_VTC" maxlength="34" placeholder="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG" value="VgT29UCrpQyJphre4LztiU1qf1cAaA4RNG"></input>
+			<input type="text" class="field address hidden" name="address" id="add_ARG" maxlength="34" placeholder="AZYb5g1xCeKhr1Vgjyz6XpNK9wQfrUXNS4" value="AHMub9pEYRawJriYgQ8pG3VnqbW1A3fx5H"></input>
+			<input type="text" class="field address hidden" name="address" id="add_XMY" maxlength="34" placeholder="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR" value="M98Npgw3rhVwgUYHp3SBM15fDuhuVkjS5C"></input>
+			<input type="text" class="field address hidden" name="address" id="add_UIS" maxlength="34" placeholder="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz" value="USd5Keb6oVnRMPpKYGkdRnf9D4p3573npG"></input>
 			</p>
 			<p>Choose/enter your fiat currency, your price per kWh and your rig's power consumption in Watt.<br />
 			<select id="fiat">
 			  <option value="EUR">EUR</option>
 			  <option value="USD">USD</option>
-			  <option value="GPB">GBP</option>
+			  <option value="GBP">GBP</option>
 			  <option value="AUD">AUD</option>
 			  <option value="CAD">CAD</option>
 			  <option value="RUB">RUB</option>
