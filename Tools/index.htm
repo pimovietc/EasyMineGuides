@@ -135,7 +135,7 @@
 			<input type="text" class="field address hidden" name="address" id="add_XMY" maxlength="34" placeholder="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR" value="M98Npgw3rhVwgUYHp3SBM15fDuhuVkjS5C"></input>
 			<input type="text" class="field address hidden" name="address" id="add_UIS" maxlength="34" placeholder="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz" value="USd5Keb6oVnRMPpKYGkdRnf9D4p3573npG"></input>
 			</p>
-			<p>Choose/enter your fiat currency, your price per kWh and your rig's power consumption in Watt.<br />
+			<p>Choose/enter your fiat currency, your price per kWh, your rig's power consumption in Watt and the date you started mining. If the date is left blank the form will use the first date in your miner's history.<br />
 			<select id="fiat">
 			  <option value="EUR">EUR</option>
 			  <option value="USD">USD</option>
@@ -144,15 +144,9 @@
 			  <option value="CAD">CAD</option>
 			  <option value="RUB">RUB</option>
 			</select><br />
-			<input type="text" class="field" name="pwrcost" id="pwrcost" maxlength="6" value="0.18"><br />
+			<input type="text" class="field" name="pwrcost" id="pwrcost" maxlength="8" value="0.173367"><br />
 			<input type="text" class="field" name="pwrcons" id="pwrcons" maxlength="6" value="340"><br />
-			<select id="cpu-zzz">
-			  <option value="sse2">cpuminer-sse2</option>
-			  <option value="avx">cpuminer-avx</option>
-			  <option value="avx2">cpuminer-avx2</option>
-			  <option value="avx2-sha">cpuminer-avx2-sha</option>
-			  <option value="aes-sse42">cpuminer-aes-sse42</option>
-			</select>
+			<input type="date" class="field" name="startdate" id="startdate"><br />
 			<div id="submitdiv"><button type="button" class="submit" onclick="create_record()">Show Record</button></div><br /><br />
 			<textarea id="recordsheet" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
 			<p>Clicking the textfield will copy it to clipboard.</p>
