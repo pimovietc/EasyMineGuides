@@ -56,7 +56,7 @@ h2, .h2{color: #fff}
 }
 
 #record textarea {
-    height: 9em;
+    /*height: 9em;*/
 }
 
 #generate input, #generate textarea, #record input, #record textarea {

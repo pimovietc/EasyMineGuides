@@ -32,8 +32,8 @@
 		<h1>EasyTools for EasyGuides</h1>
 	</div>
 	<div id="top" class="content">
-		<p>This page (will) contain(s) several different tools that work hand-in-hand with mining. Some tools might be of no use to you, others will be your lifesaver.</p>
-		<p>All the tools are free to use. However, if you find that a particular tool has been most helpful to you feel free to press on the '<a href="../Coffee" target="_blank">Buy me a Coffee!</a>' button in the top right hand corner.</p>
+		<p>This page contain several different tools that work hand-in-hand with mining. Some tools might be of no use to you, others will be your lifesaver.</p>
+		<p>All the tools are free to use. However, if you find that a particular tool has been most helpful to you feel free to press on the '<a href="../Coffee" target="_blank">Buy me a Coffee!</a>' button in the top right hand corner. This would help me continue to develop new tools for you to use.</p>
 	</div>
 
 	<div class="header">
@@ -42,8 +42,17 @@
 	<div id="toc_container" class="content">
 		<ul class="toc_list">
 			<li><a href="#generator">BAT-file Generator</a></li>
-	  		<li><a href="#record">WIP - Recordkeeping</a></li>
-	  		<li><a href="#windowssettings">WIP - Windows Settings Script</a></li>
+	  		<li><a href="#record">Recordkeeping</a></li>
+		</ul>
+	</div>
+
+	<div class="header">
+		<h1>Planned Tools</h1>
+	</div>
+	<div id="toc_container" class="content">
+		<ul class="toc_list">
+			<li><a href="#watchdog">TBA - In-Browser Rig Watchdog</a></li>
+			<li><a href="#windowssettings">TBA - Windows Settings Script</a></li>
 		</ul>
 	</div>
 
@@ -113,10 +122,10 @@
 		<h1>Recordkeeping</h1>
 	</div>
 	<div id="record" class="content">
-		<p>Below you'll find a form that allows you to generate a sheet shows you what your mining efforts are currently worth and what they were worth historically, i.e. how much it would be worth in fiat if you had sold every token at the moment you received it as a payout from the pool. At the moment it might not be necessary to keep track of the historic worth of your mining efforts, but this could change in the future if your government decides that mining is a taxable event. Even worse would be if they would implement this with retrospect! In any case it would be usefull information to have handy, to check whether or not your goverments prediction on your mining efforts is accurate.</p>
-		<p>By providing your miner's addresses that you use on EasyMine we can fetch your transaction history. Then the current and historic prices are fetched and the information is processed and an overview is generated.</p>		
+		<p>Below you'll find a form that allows you to generate a sheet shows you what your mining efforts are currently worth (and soon what they were worth historically, i.e. how much it would be worth in fiat if you had sold every token at the moment you received it as a payout from the pool). At the moment it might not be necessary to keep track of the historic worth of your mining efforts, but this could change in the future if your government decides that mining is a taxable event. Even worse would be if they would implement this with retrospect! In any case it would be usefull information to have handy, to check whether or not your goverments prediction on your mining efforts is accurate.</p>
+		<p>By providing your miner's addresses that you use on EasyMine we can fetch your transaction history. Then the current prices are fetched and the information is processed and an overview is generated.</p>		
 		<p><b>Note:</b> None of your data is saved on the server and the entire sheet is generated/computed client side. Down below a downloadable version of this form is provided so that you can run it locally if you desire to do so.</p>
-		<p><b>Note:</b> The Unitus address should only be included if you are mining on the separate unitus mining pool!</p>
+		<p><b>Note:</b> The Unitus address should only be included if you are mining on the separate unitus mining pool! At the moment your merge-mined UIS is not considered in the record.</p>
 		<form>
 			<p>Select which GPU currencies you are want to keep a record of:<br />
 				<label><input type="checkbox" name="cointype" value="MON" onchange="change_form_record()"> MonaCoin (GPU)</input></label><br />
@@ -135,7 +144,9 @@
 			<input type="text" class="field address hidden" name="address" id="add_XMY" maxlength="34" placeholder="MW6ka2r1NXKNZgSwXUcRkJ4mJa3tKuvmiR" value="M98Npgw3rhVwgUYHp3SBM15fDuhuVkjS5C"></input>
 			<input type="text" class="field address hidden" name="address" id="add_UIS" maxlength="34" placeholder="UcBynhRvG5P3mRYXke9wiHhJb2NmuQS8nz" value="USd5Keb6oVnRMPpKYGkdRnf9D4p3573npG"></input>
 			</p>
-			<p>Choose/enter your fiat currency, your price per kWh, your rig's power consumption in Watt and the date you started mining. If the date is left blank the form will use the first date in your miner's history.<br />
+			<p>Choose/enter your fiat currency, your price per kWh, your rig's power consumption in Watt and the date you started mining.<br />
+				If the date is left blank the form will use the first date in your miner's history.<br />
+				If you don't care about the power cost of your mining rigs then enter 0 as your price per kWh.<br />
 			<select id="fiat">
 			  <option value="EUR">EUR</option>
 			  <option value="USD">USD</option>
@@ -148,17 +159,24 @@
 			<input type="text" class="field" name="pwrcons" id="pwrcons" maxlength="6" value="340"><br />
 			<input type="date" class="field" name="startdate" id="startdate"><br />
 			<div id="submitdiv"><button type="button" class="submit" onclick="create_record()">Show Record</button></div><br /><br />
-			<textarea id="recordsheet" readonly="readonly" placeholder="BAT script will appear here if you press &quot;Download BAT&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
-			<p>Clicking the textfield will copy it to clipboard.</p>
+			<textarea id="recordsheet" readonly="readonly" rows="5" placeholder="Your mining record will appear here if you fill out the form and press &quot;Show Record&quot;" onclick="this.focus();this.select();document.execCommand('copy');"></textarea>
 		</form>
 	</div>
 
-	<a name="windowssettings"></a>
-	<div class="header hidden">
-		<h1>Windows Settings Script</h1>
+	<a name="watchdog"></a>
+	<div class="header">
+		<h1>TBA - In-Browser Rig Watchdog</h1>
 	</div>
-	<div id="windowssettings" class="content hidden">
-		<p>Script that disables updates, sets up weekly reboot, sets Afterburner settings (?)</p>
+	<div id="watchdog" class="content">
+		<p>Watchdog that fetches your hashrate from EasyMine and notifies you if your rig is down. Without storing information on a server.</p>
+	</div>
+
+	<a name="windowssettings"></a>
+	<div class="header">
+		<h1>TBA - Windows Settings Script</h1>
+	</div>
+	<div id="windowssettings" class="content">
+		<p>Script that automates a mining rig setup on Windows. E.g. disables updates, sets up weekly reboot, sets OC profiles etc.</p>
 	</div>
 </div>
 </body>

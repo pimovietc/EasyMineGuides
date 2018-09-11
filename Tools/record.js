@@ -46,13 +46,14 @@ var currencies; // array that contains all currencies, addresses, values etc.
 } */
 var general = {
 	cost_daily: 0, 				//fixed kWh*PWR
-	cost_total: 0, 				//cost_daily*days_mining
+	cost_total: [0, 0, 0],		//average daily cost last day, week, month (just multiples of eachother)
+	days_mining: 0,				//now-startdate
 	fiat: '',					//user-selected fiat currency
 	kWh: '',					//user-selected kWh price
 	profit_daily: [0, 0, 0], 	//average daily profit last day, week, month
-	profit_total: 0, 			//revnue_total - cost_total
+	profit_total: 0, 			//revenue_total - cost_total
 	PWR: '',					//user-selected PWR consumption
-	revenue_daily: [0, 0, 0],	//average daily revnue last day, week, month
+	revenue_daily: [0, 0, 0],	//average daily revenue last day, week, month
 	revenue_total: 0,			//sum of current value of all tokens
 	start_check: false,			//flag that is set iff start_date remains empty
 	start_date: ''				//start date of mining
@@ -69,15 +70,23 @@ function create_record() {
   cointypes = document.getElementsByName('cointype');
   coins = [];
 
-  //variables
+  //setting general
+  general.cost_daily = [0, 0, 0];
+  general.cost_total = 0;
+  general.days_mining = 0;
   general.fiat = document.getElementById('fiat').value;
   general.kWh = document.getElementById('pwrcost').value;
+  general.profit_daily = [0, 0, 0];
+  general.profit_total = 0;
   general.PWR = document.getElementById('pwrcons').value;
+  general.revenue_daily = [0, 0, 0];
+  general.revenue_total = 0;
   general.start_date = Date.parse(document.getElementById('startdate').value);
+  general.start_check = false;
+
   currencies = [];
   sheet = '0';
   json_count = 0; //reset json_counter each time button is pressed
-  general.start_check = false;
 
   // Gather selected currencies
   for (var i=0, n=cointypes.length;i<n;i++) {
@@ -212,8 +221,12 @@ function create_record() {
     json_easymine(cleanJSON,'https://' + api_url + '.easymine.online/api/minertxhistory/' + currencies[i].address, i);
 
     //Do general stuff while we're waiting for the JSON calls to finish
-    general.cost_daily = 24 * general.kWh * general.PWR / 1000;
-    general.cost_daily = general.cost_daily.toFixedNumber(8);
+    general.cost_daily[0] = 24 * general.kWh * general.PWR / 1000;
+    general.cost_daily[1] = 7  * general.cost_daily[0];
+    general.cost_daily[2] = 30 * general.cost_daily[0];
+    general.cost_daily[0] = general.cost_daily[0].toFixedNumber(8);
+    general.cost_daily[1] = general.cost_daily[1].toFixedNumber(8);
+    general.cost_daily[2] = general.cost_daily[2].toFixedNumber(8);
   }
   
 }
@@ -309,43 +322,66 @@ function doStuffwithJSON(fiat_price, count) {
 	//compute dailies
 	oneday = 1000*60*60*24; //oneday
 	today = new Date().getTime();
-	today2 = Math.round(new Date().getTime() / oneday)*oneday;
-	today3 = today2 - oneday;
-	
-	//FIX ME, probably don't need to do this fancy rounding. Just take all payouts between NOW() and NOW()-oneday.
+	period = [(today - oneday)/1000, (today - oneday*7)/1000, (today - oneday*30)/1000];
 
-	console.log(today);
-	console.log(new Date(today).toISOString().slice(0,-14));
-	console.log(today2);
-	console.log(new Date(today2).toISOString().slice(0,-14));
-	console.log(today3);
-	console.log(new Date(today3).toISOString().slice(0,-14));
-	general.revenue_daily[0] += -currencies[count].txhistory.slice(-1)[0].amount * currencies[count].fiat_price;
-	//FIX ME, this only works for my personal miner as I have daily payouts. Need to implement logic that checks for the date!
-
-	//psuedo for weekly/monthly
-	/*
-	for (i = -1 to -7) {
-		general.revenue_daily[1] += -currencies[count].txhistory.slice(i)[0].amount * currencies[count].fiat_price;		
+	//compute revenues
+	for (var i=0, n=currencies[count].txhistory.length-1;i<=n;n--) {
+		if (currencies[count].txhistory[n].ts >= period[0]) {
+			//add daily
+			general.revenue_daily[0] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+			general.revenue_daily[1] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+			general.revenue_daily[2] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+		} else if (currencies[count].txhistory[n].ts >= period[1]) {
+			//add weekly/monthly
+			general.revenue_daily[1] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+			general.revenue_daily[2] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+		} else if (currencies[count].txhistory[n].ts >= period[2]) {
+			//add monthly
+			general.revenue_daily[2] += -currencies[count].txhistory[n].amount * currencies[count].fiat_price;
+		} else {
+			break;
+		}
 	}
-
-	*/
 
 	// Wait till all crypto JSON calls are finished.
 	json_count++;
 	if (json_count == currencies.length) {
 		// in here is synced!
 		console.log('All EasyMine API calls fetched!');
+		general.days_mining = ((today - general.start_date)/oneday).toFixedNumber(8);
+		general.cost_total = (general.days_mining * general.cost_daily[0]).toFixedNumber(8);
+		general.profit_total = (general.revenue_total - general.cost_total).toFixedNumber(8);
+
+		//convert to FixedNumber in here, so it occurs only once.
+		general.revenue_daily[0] = general.revenue_daily[0].toFixedNumber(8);
+		general.revenue_daily[1] = general.revenue_daily[1].toFixedNumber(8);
+		general.revenue_daily[2] = general.revenue_daily[2].toFixedNumber(8);
+		general.revenue_total = general.revenue_total.toFixedNumber(8);
+
+		for (var i=0, n=general.profit_daily.length;i<n;i++) {
+			general.profit_daily[i] = general.revenue_daily[i] - general.cost_daily[i];
+		}
+		general.profit_daily[0] = general.profit_daily[0].toFixedNumber(8);
+		general.profit_daily[1] = general.profit_daily[1].toFixedNumber(8);
+		general.profit_daily[2] = general.profit_daily[2].toFixedNumber(8);
 
 		for (var i=0, n=currencies.length;i<n;i++) {
-
-
-			sheet += 'You have mined ' + currencies[i].token_sum + ' ' + currencies[i].coin + '. Which is equal to ' + currencies[i].fiat_value + ' ' + general.fiat + '.\n';
+			sheet += 'You have mined ' + currencies[i].token_sum + ' ' + currencies[i].coin + ', which is currently worth ' + (currencies[i].fiat_value).toFixedNumber(2) + ' ' + general.fiat + '.\n';
 		}
+		sheet += 'So in total your mining efforts are currently worth ' + (general.revenue_total).toFixedNumber(2) + ' ' + general.fiat + '.\n';
 
 		newdate = new Date(general.start_date).toISOString().slice(0,-14);
-		sheet += 'General settings: ' + general.kWh + ' ' + general.PWR + ' start_date= ' + newdate;
+		//sheet += 'General settings: ' + general.kWh + ' ' + general.PWR + ' start_date= ' + newdate;
+		sheet += '\nSince you have started mining on ' + newdate + ' and your rigs consume ' + general.PWR + 'W at a rate of ' + general.kWh + ' ' + general.fiat + ' per kWh.';
+		sheet += ' Your total costs add up to ' + general.cost_total + ' ' + general.fiat + '.\n';
+		sheet += '\n';
+		sheet += 'OVERVIEW:\n';
+		sheet += 'Profit past 24 hours: ' + (general.profit_daily[0]).toFixedNumber(4) + '\n';
+		sheet += 'Profit past  7 days:  ' + (general.profit_daily[1]).toFixedNumber(4) + '\n';
+		sheet += 'Profit past 30 days:  ' + (general.profit_daily[2]).toFixedNumber(4) + '\n';
+		sheet += 'Profit total:         ' + (general.profit_total).toFixedNumber(4);
 		document.getElementById('recordsheet').value = sheet;
+		document.getElementById('recordsheet').rows = 10+currencies.length;
 	}
 
 }
