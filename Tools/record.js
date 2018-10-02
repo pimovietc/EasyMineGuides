@@ -1,3 +1,49 @@
+//Fetch and place variabes from local storage, if available!
+function load_localstorage() {
+  //It is empty if the site has never been used before!
+  if (localStorage.length > 0) {
+    document.getElementById('pwrcons').value    = localStorage.getItem('local_pwrcons');
+    document.getElementById('pwrcost').value    = localStorage.getItem('local_pwrcost');
+    document.getElementById('fiat').value       = localStorage.getItem('local_fiat');
+    document.getElementById('startdate').value  = localStorage.getItem('local_startdate');
+
+    //Add settings for what coins/addresses!
+    document.getElementById('add_MON').value    = localStorage.getItem('local_add_MON');
+    document.getElementById('add_VTC').value    = localStorage.getItem('local_add_VTC');
+    document.getElementById('add_ARG').value    = localStorage.getItem('local_add_ARG');
+    document.getElementById('add_XMY').value    = localStorage.getItem('local_add_XMY');
+    document.getElementById('add_UIS').value    = localStorage.getItem('local_add_UIS');
+
+    //load checkboxes
+    var cointypes = document.getElementsByName('cointype');
+    for (var i=0, n=cointypes.length;i<n;i++) {
+      cointypes[i].checked = (localStorage.getItem('local_cointypes_'+i) == 'true');
+    }
+    change_form_record();
+  }
+}
+
+//called when record is computed, saves settings to localstorage.
+function save_localstorage() {
+  localStorage.setItem("local_pwrcons",     document.getElementById('pwrcons').value);
+  localStorage.setItem("local_pwrcost",     document.getElementById('pwrcost').value);
+  localStorage.setItem("local_fiat",        document.getElementById('fiat').value);
+  localStorage.setItem("local_startdate",   new Date(general.start_date).toISOString().slice(0,-14)); //should be computed date!
+
+  //Add settings for what coins/addresses!
+  localStorage.setItem("local_add_MON",     document.getElementById('add_MON').value);
+  localStorage.setItem("local_add_VTC",     document.getElementById('add_VTC').value);
+  localStorage.setItem("local_add_ARG",     document.getElementById('add_ARG').value);
+  localStorage.setItem("local_add_XMY",     document.getElementById('add_XMY').value);
+  localStorage.setItem("local_add_UIS",     document.getElementById('add_UIS').value);
+
+  //save checked boxes
+  var cointypes = document.getElementsByName('cointype');
+  for (var i=0, n=cointypes.length;i<n;i++) {
+    localStorage.setItem("local_cointypes_"+i, cointypes[i].checked);
+  }
+}
+
 // Function to match the Recordsheet form to the latest applied settings
 function change_form_record() {
   var cointypes = document.getElementsByName('cointype');
@@ -368,7 +414,9 @@ function doStuffwithJSON(fiat_price, count) {
 		for (var i=0, n=currencies.length;i<n;i++) {
 			sheet += 'You have mined ' + currencies[i].token_sum + ' ' + currencies[i].coin + ', which is currently worth ' + (currencies[i].fiat_value).toFixedNumber(2) + ' ' + general.fiat + '.\n';
 		}
-		sheet += 'So in total your mining efforts are currently worth ' + (general.revenue_total).toFixedNumber(2) + ' ' + general.fiat + '.\n';
+    if (currencies.length > 1) {
+      sheet += 'So in total your mining efforts are currently worth ' + (general.revenue_total).toFixedNumber(2) + ' ' + general.fiat + '.\n';
+    }
 
 		newdate = new Date(general.start_date).toISOString().slice(0,-14);
 		//sheet += 'General settings: ' + general.kWh + ' ' + general.PWR + ' start_date= ' + newdate;
@@ -382,6 +430,9 @@ function doStuffwithJSON(fiat_price, count) {
 		sheet += 'Profit total:         ' + (general.profit_total).toFixedNumber(4);
 		document.getElementById('recordsheet').value = sheet;
 		document.getElementById('recordsheet').rows = 10+currencies.length;
+
+    //save settings to local storage
+    save_localstorage();
 	}
 
 }
